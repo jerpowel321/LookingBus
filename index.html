@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Simple Map</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Googlefonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<!-- Font Awesome -->
+	<script src="https://use.fontawesome.com/f805b78e67.js"></script>
+	<style>
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		a {
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		h1 {
+			font-size: 50px;
+			font-weight: 400;
+
+		}
+
+		h3:hover {
+			font-size: 2rem;
+			font-weight: bold;
+		}
+
+		p {
+			font-size: 25px;
+			font-weight: 700;
+		}
+
+		p:hover {
+			font-size: 25px;
+			font-weight: 700;
+		}
+
+		#company {
+			font-size: 40px;
+		}
+
+		#map {
+			height: 100%;
+		}
+
+		/* Optional: Makes the sample page fill the window. */
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.navbar {
+			min-height: 100px;
+		}
+
+		.purpleBG {
+			background-color: #4E53A5;
+		}
+
+		.purple {
+			color: #4E53A5;
+		}
+
+		.yellowBG {
+			background-color: #FDF100;
+		}
+
+		.greenBG {
+			background-color: #70BE5B;
+		}
+
+		.green {
+			color: #70BE5B;
+		}
+
+		.blueBG {
+			background-color: #68BBE5;
+		}
+
+		.pinkBG {
+			background-color: #E2008A;
+		}
+
+		.footer {
+			min-height: 500px;
+			border-top: 4px solid #4E53A5;
+			padding: 10px 0px 20px 0px;
+		}
+
+		.footer a {
+			margin: 0px 5px;
+			display: inline-block;
+			font-size: 20px;
+			padding: 5px;
+		}
+
+		.footer a:hover {
+			color: black;
+			background-color: white;
+			text-decoration: underline;
+			font-size: 25px;
+		}
+
+		.footer svg {
+			margin-right: 5px;
+		}
+
+		.footer button {
+			justify-content: center;
+			border: 2px solid white;
+			margin: 10px
+		}
+
+		.footer button:hover {
+			background-color: #4E53A5;
+
+
+		}
+
+		.footerLine {
+			border-top: 2px solid white;
+		}
+
+		.footerBottom svg:hover {
+			color: #4E53A5;
+		}
+
+
+		.sidebar {
+			height: 100%;
+			width: 0;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #F0F0F0;
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 60px;
+		}
+
+		.sidebar a {
+			padding: 8px 8px 8px 32px;
+			text-decoration: none;
+			font-size: 25px;
+			color: black;
+			display: block;
+			transition: 0.3s;
+		}
+
+		.sidebar a:hover {
+			color: #70BE5B;
+			font-size: 30px;
+			font-weight: 700;
+		}
+
+		.sidebar .closebtn {
+			position: absolute;
+			top: 0;
+			right: 25px;
+			font-size: 36px;
+			margin-left: 50px;
+		}
+
+		.openbtn {
+			font-size: 20px;
+			cursor: pointer;
+			background-color: #70BE5B;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+		}
+
+		.openbtn:hover {
+			background-color: rgb(174, 233, 157);
+			color: black;
+			border: 2px solid rgb(54, 164, 81);
+		}
+
+		#main {
+			transition: margin-left .5s;
+			padding: 16px;
+		}
+
+		.navbar a {
+			color: #70BE5B;
+			margin: 0px 5px;
+			display: inline-block;
+			font-size: 20px;
+			padding: 5px;
+		}
+
+		.navbar a:hover {
+			color: #4E53A5;
+			text-decoration: underline;
+			font-size: 25px;
+		}
+
+		form {
+			width: 50%;
+			margin: auto;
+			padding: 40px 20px;
+		}
+
+		/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+		@media screen and (max-height: 450px) {
+			.sidebar {
+				padding-top: 15px;
+			}
+
+			.sidebar a {
+				font-size: 18px;
+			}
+		}
+
+		/* Grow */
+		.hvr-grow {
+			display: inline-block;
+			vertical-align: middle;
+			transform: translateZ(0);
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+			backface-visibility: hidden;
+			-moz-osx-font-smoothing: grayscale;
+			transition-duration: 0.3s;
+			transition-property: transform;
+		}
+
+		.hvr-grow:hover,
+		.hvr-grow:focus,
+		.hvr-grow:active {
+			transform: scale(1.1);
+		}
+
+		@media only screen and (max-width: 575px) {
+			footer div {
+				text-align: center;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div id="mySidebar" class="sidebar">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+		<a href="https://www.sfmta.com/" target="_blank">SF MTA</a>
+		<a href="#">About</a>
+		<a href="#">Services</a>
+		<a href="#">Cities</a>
+		<a href="#">Contact</a>
+	</div>
+	<nav class="navbar navbar-light bg-light justify-content-around">
+		<div class="p-2" id="main">
+			<button class="openbtn" onclick="openNav()">☰</button>
+		</div>
+		<div class="p-2 text-white d-flex align-content-around d-inline-block">
+			<a href="https://www.lookingbus.com/">
+				<img src="https://img.icons8.com/plasticine/100/000000/bus.png" width="60" height="60"
+					class="d-inline-block align-top" alt="">
+			</a>
+			<p id="company" class="green">Looking Bus</p>
+			<div>
+			</div>
+		</div>
+		</div>
+		<div class="p-2">
+			<a href="https://www.lookingbus.com/">About</a>
+			<a href="https://www.lookingbus.com/">Press</a>
+			<a href="https://www.lookingbus.com/">Contact</a>
+		</div>
+	</nav>
+	<div id="msg"></div>
+	<div class="container">
+		<form>
+			<h3 class="purple">Find a route near you!</h3>
+			<div class="row">
+				<div class="col">
+					<label for="line">Transportation Agency</label>
+					<select class="form-control" id="line" >					
+					<option value="3D">Tri Delta Transit</option>
+					<option value="AC">AC Transit</option>					
+					<option value="AM">Capitol Corridor Joint Powers Authority</option>
+					<option value="BA">Bay Area Rapid Transit</option>
+					<option value="CC">County Connection</option>>
+					<option value="CE">Altamont Corridor Express</option>
+					<option value="CM">Commute.org Shuttles</option>
+					<option value="CT">Caltrain</option>
+					<option value="DE">Dumbarton Express Consortium</option>
+					<option value="EM">Emery Go-Round</option>					
+					<option value="FS">Fairfield and Suisun Transit</option>					
+					<option value="GF">Golden Gate Ferry</option>					
+					<option value="GG">Golden Gate Transit</option>
+					<option value="MA">Marin Transit</option>
+					<option value="PE">Petaluma Transit</option>
+					<option value="RG">Regional GTFS</option>					
+					<option value="RV">Rio Vista Delta Breeze</option>>
+					<option value="SA">Sonoma Marin Area Rail Transit</option>					
+					<option value="SB">San Francisco Bay Ferry</option>
+					<option value="SC">VTA</option>
+					<option value="SF">San Francisco Municipal Transportation Agency</option>
+					<option value="SI">San Francisco International Airport</option>
+					<option value="SM">SamTrans</option>
+					<option value="SO">Sonoma County Transit</option>
+					<option value="SR">Santa Rosa CityBus</option>
+					<option value="SS">City of South San Francisco</option>
+					<option value="ST">SolTrans</option>					
+					<option value="TD">Tideline Water Taxi</option>
+					<option value="UC">Union City Transit</option>>
+					<option value="VC">Vacaville City Coach</option>
+					<option value="VN">VINE Transit</option>
+					<option value="WC">WestCat (Western Contra Costa)</option>
+					<option value="WH">Livermore Amador Valley Transit Authority</option>
+				</select>
+				</div>
+				<div class="col">
+					<label for="line">Bus Line</label>
+					<select class="form-control" id="line">
+						<option value="1">1</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="14">14</option>
+						<option value="14R">14R</option>
+						<option value="19">19</option>
+						<option value="22">22</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="29">29</option>
+						<option value="38">38</option>
+						<option value="38R">38R</option>
+						<option value="44">44</option>
+						<option value="49">49</option>
+						<option value="90">90</option>
+						<option value="91">91</option>
+						<option value="714">714</option>
+						<option value="LBUS">LBUS</option>
+						<option value="L-OWL">L-OWL</option>
+						<option value="TBUS">TBUS</option>
+						<option value="NBUS">NBUS</option>
+						<option value="N-OWL">N-OWL</option>
+					</select>
+				</div>
+			</div>
+		</form>
+		<div id="map" class="m-5" style="width: 100%; height: 400px;"></div>
+	</div>
+	<footer class="footer greenBG text-white">
+		<div class="row pb-4">
+			<div class="col-xs-12 col-sm-2 col-md-6">
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-2 pl-2 pr-2">
+				<h3 class="purple pt-5">Company</h3>
+				<a>About</a><br />
+				<a>Team</a><br />
+				<a>Values</a><br />
+				<a>Blog</a><br />
+				<a>Press</a><br />
+				<a>Jobs</a><br />
+				<a>Contact</a><br />
+				<a>FAQ</a><br />
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4">
+				<h3 class="purple pt-5">Download the App</h3>
+				<button type="button" class="btn text-white btn-lg hvr-grow">
+					<svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple"
+						class="svg-inline--fa fa-apple fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+						<path fill="currentColor"
+							d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z">
+						</path>
+					</svg>
+					Apple Store
+				</button>
+				<button type="button" class="btn text-white btn-lg hvr-grow">
+					<svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play"
+						class="svg-inline--fa fa-google-play fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512">
+						<path fill="currentColor"
+							d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
+						</path>
+					</svg>
+					Google Play
+				</button>
+			</div>
+		</div>
+		<div class=".container-xl text-center footerLine pt-2 mt-2 footerBottom">
+			<div class="row pt-1">
+				<div class="col-xs-12 col-sm-1 col-md-2">
+				</div>
+				<div class="col-xs-12 col-sm-7 col-md-8 mt-3">
+					<a>Privacy Policy</a>
+					<a>Terms of service</a>
+					<a>Additional Resources</a>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-2 mt-2">
+					<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
+						data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" role="img"
+						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+						<path fill="currentColor"
+							d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z">
+						</path>
+					</svg>
+					<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin"
+						class="svg-inline--fa fa-linkedin fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 448 512">
+						<path fill="currentColor"
+							d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
+						</path>
+					</svg>
+				</div>
+			</div>
+			<div>
+			</div>
+		</div>
+	</footer>
+	<script>
+		//   var locations = [
+    //   ['Bondi Beach', -33.890542, 151.274856, 4],
+    //   ['Coogee Beach', -33.923036, 151.259052, 5],
+    //   ['Cronulla Beach', -34.028249, 151.157507, 3],
+    //   ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+    //   ['Maroubra Beach', -33.950198, 151.259302, 1]
+    // ];
+    //   var map;
+    //   // Initialize and add the map
+    //   function initMap() {
+    //     // The location of user
+    //     currentLocation = {lat: -33.890542, lng: 151.274856}
+    //     boba = {lat:37.7729, lgn: 122.4235}
+    //     var busImage = "https://img.icons8.com/plasticine/100/000000/bus.png"
+    //     var starImage = "https://img.icons8.com/plasticine/100/000000/bus.png"
+    //     var stopImage = 
+    //     // The map, centered at user location
+    //     map = new google.maps.Map(document.getElementById('map'), {
+    //       center: currentLocation,
+    //       zoom: 16,
+    //       title: "You're Here",
+    //       icon: busImage
+    //     });
+    //     // The marker, positioned at currentLocation
+    //     // var marker = new google.maps.Marker({position: currentLocation, map: map});
+    //     var infowindow = new google.maps.InfoWindow();
+
+    // var marker, i;
+
+    // for (i = 0; i < locations.length; i++) {  
+    //   marker = new google.maps.Marker({
+    //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+    //     map: map
+    //   });
+
+    //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //     return function() {
+    //       infowindow.setContent(locations[i][0]);
+    //       infowindow.open(map, marker);
+    //     }
+    //   })(marker, i));
+    // }
+    //   }
+	</script> -->
+	<!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=____________&callback=initMap"
+		async defer></script>
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+</body>
+<script type="text/javascript" src="index.js"></script>
+
+</html>
