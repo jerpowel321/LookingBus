@@ -247,7 +247,35 @@
 			footer div {
 				text-align: center;
 			}
-		}
+        }
+        
+        .img__wrap {
+  position: relative;
+  height: 200px;
+  width: 257px;
+  margin: 10px;
+}
+
+.img__description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  padding: 20px;
+  /* margin: 10px; */
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
 	</style>
 </head>
 
@@ -255,7 +283,7 @@
 	<div id="mySidebar" class="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
 		<a href="https://www.sfmta.com/" target="_blank">SF MTA</a>
-		<a href="/about.html">About</a>
+		<a href="#">About</a>
 		<a href="#">Services</a>
 		<a href="#">Cities</a>
 		<a href="#">Contact</a>
@@ -280,80 +308,40 @@
 			<a href="https://www.lookingbus.com/">Contact</a>
 		</div>
 	</nav>
-	<div id="msg"></div>
-	<div class="container">
-		<form>
-			<h3 class="purple">Find a route near you!</h3>
-			<div class="row">
-				<div class="col">
-					<label for="line">Transportation Agency</label>
-					<select class="form-control" id="line" >					
-					<option value="3D">Tri Delta Transit</option>
-					<option value="AC">AC Transit</option>					
-					<option value="AM">Capitol Corridor Joint Powers Authority</option>
-					<option value="BA">Bay Area Rapid Transit</option>
-					<option value="CC">County Connection</option>>
-					<option value="CE">Altamont Corridor Express</option>
-					<option value="CM">Commute.org Shuttles</option>
-					<option value="CT">Caltrain</option>
-					<option value="DE">Dumbarton Express Consortium</option>
-					<option value="EM">Emery Go-Round</option>					
-					<option value="FS">Fairfield and Suisun Transit</option>					
-					<option value="GF">Golden Gate Ferry</option>					
-					<option value="GG">Golden Gate Transit</option>
-					<option value="MA">Marin Transit</option>
-					<option value="PE">Petaluma Transit</option>
-					<option value="RG">Regional GTFS</option>					
-					<option value="RV">Rio Vista Delta Breeze</option>>
-					<option value="SA">Sonoma Marin Area Rail Transit</option>					
-					<option value="SB">San Francisco Bay Ferry</option>
-					<option value="SC">VTA</option>
-					<option value="SF">San Francisco Municipal Transportation Agency</option>
-					<option value="SI">San Francisco International Airport</option>
-					<option value="SM">SamTrans</option>
-					<option value="SO">Sonoma County Transit</option>
-					<option value="SR">Santa Rosa CityBus</option>
-					<option value="SS">City of South San Francisco</option>
-					<option value="ST">SolTrans</option>					
-					<option value="TD">Tideline Water Taxi</option>
-					<option value="UC">Union City Transit</option>>
-					<option value="VC">Vacaville City Coach</option>
-					<option value="VN">VINE Transit</option>
-					<option value="WC">WestCat (Western Contra Costa)</option>
-					<option value="WH">Livermore Amador Valley Transit Authority</option>
-				</select>
-				</div>
-				<div class="col">
-					<label for="line">Bus Line</label>
-					<select class="form-control" id="line">
-						<option value="1">1</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="14">14</option>
-						<option value="14R">14R</option>
-						<option value="19">19</option>
-						<option value="22">22</option>
-						<option value="24">24</option>
-						<option value="25">25</option>
-						<option value="29">29</option>
-						<option value="38">38</option>
-						<option value="38R">38R</option>
-						<option value="44">44</option>
-						<option value="49">49</option>
-						<option value="90">90</option>
-						<option value="91">91</option>
-						<option value="714">714</option>
-						<option value="LBUS">LBUS</option>
-						<option value="L-OWL">L-OWL</option>
-						<option value="TBUS">TBUS</option>
-						<option value="NBUS">NBUS</option>
-						<option value="N-OWL">N-OWL</option>
-					</select>
-				</div>
-			</div>
-		</form>
-		<div id="map" class="m-5" style="width: 100%; height: 400px;"></div>
-	</div>
+    </div>
+    <div class="container">
+        <h3 class="purple">
+            Mission: Making Public Transportation Accessible for People with Visual Impairments
+        </h3>
+
+        <h3 class="purple">
+            In the News
+        </h3>
+        <div class="img__wrap">
+            <img class="img__img" src="http://placehold.it/257x200.jpg" />
+            <p class="img__description">This image looks super neat.</p>
+          </div>
+          <div class="img__wrap">
+            <img class="img__img" src="http://placehold.it/257x200.jpg" />
+            <p class="img__description">This image looks super neat.</p>
+          </div>
+          <div class="img__wrap">
+            <img class="img__img" src="http://placehold.it/257x200.jpg" />
+            <p class="img__description">This image looks super neat.</p>
+          </div>
+        <img src="/images/bus.jpg" alt="Crowded Bus" height="42" />
+
+        <h3 class="purple">
+            The Team
+        </h3>
+        <div>
+            <img  src="https://img.icons8.com/dusk/64/000000/america.png"/>
+            <p class="purple d-inline">We are an early stage start up with teams across three continents!</p>
+        </div>
+        <h3 class="purple">
+            Our Values
+        </h3>
+    </div>
 	<footer class="footer greenBG text-white">
 		<div class="row pb-4">
 			<div class="col-xs-12 col-sm-2 col-md-6">
@@ -422,58 +410,6 @@
 			</div>
 		</div>
 	</footer>
-	<script>
-		//   var locations = [
-    //   ['Bondi Beach', -33.890542, 151.274856, 4],
-    //   ['Coogee Beach', -33.923036, 151.259052, 5],
-    //   ['Cronulla Beach', -34.028249, 151.157507, 3],
-    //   ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-    //   ['Maroubra Beach', -33.950198, 151.259302, 1]
-    // ];
-    //   var map;
-    //   // Initialize and add the map
-    //   function initMap() {
-    //     // The location of user
-    //     currentLocation = {lat: -33.890542, lng: 151.274856}
-    //     boba = {lat:37.7729, lgn: 122.4235}
-    //     var busImage = "https://img.icons8.com/plasticine/100/000000/bus.png"
-    //     var starImage = "https://img.icons8.com/plasticine/100/000000/bus.png"
-    //     var stopImage = 
-    //     // The map, centered at user location
-    //     map = new google.maps.Map(document.getElementById('map'), {
-    //       center: currentLocation,
-    //       zoom: 16,
-    //       title: "You're Here",
-    //       icon: busImage
-    //     });
-    //     // The marker, positioned at currentLocation
-    //     // var marker = new google.maps.Marker({position: currentLocation, map: map});
-    //     var infowindow = new google.maps.InfoWindow();
-
-    // var marker, i;
-
-    // for (i = 0; i < locations.length; i++) {  
-    //   marker = new google.maps.Marker({
-    //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-    //     map: map
-    //   });
-
-    //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
-    //     return function() {
-    //       infowindow.setContent(locations[i][0]);
-    //       infowindow.open(map, marker);
-    //     }
-    //   })(marker, i));
-    // }
-    //   }
-	</script> -->
-	<!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=____________&callback=initMap"
-		async defer></script>
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
