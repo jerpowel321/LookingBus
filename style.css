@@ -3,6 +3,330 @@ html, body {
     margin: 0;
     padding: 0;
 }
-#map {
+#grad {
+    background-image: linear-gradient(white, #4E53A5);
+}
+#firstgradient {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 90px 100vw 0 0;
+    border-color: #4E53A5 transparent transparent transparent;
+    transform: scale(1.0001);
+}
+
+/* Text CSS */
+h1, h2, h3, h4, h5, h6, p, a, label, input, select, option, button {
+    font-family: 'Montserrat', sans-serif;
+    
+}
+h1 {
+    font-size: 50px;
+    font-weight: 400;
+}
+h3:hover {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+p {
+    font-size: 25px;
+    font-weight: 700;
+}
+#aboutPage p {
+    font-size: 18px;
+    font-weight: 700;
+}
+p:hover {
+    font-size: 22px;
+    font-weight: 700;
+}
+#aboutPage p:hover {
+    font-size: 20px;
+    font-weight: 700;
+}
+#company {
+    font-size: 40px;
+    margin-bottom: 0px;
+}
+#locationButtonContainer{
+    padding-top: 40px;
+}
+/* Components CSS */
+/* Navbar CSS */
+.navbar {
+    min-height: 100px;
+}
+.navbar a {
+    color: #70BE5B;
+    margin: 0px 5px;
+    display: inline-block;
+    font-size: 20px;
+    padding: 5px;
+}
+.navbar a:hover {
+    color: #4E53A5;
+    text-decoration: underline;
+    font-size: 25px;
+}
+.navItems {
+    padding: 20px 8px 0px 8px;
+}
+
+/* Sidebar CSS */
+.sidebar {
     height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #F0F0F0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+.sidebar a:hover {
+    color: #70BE5B;
+    font-size: 30px;
+    font-weight: 700;
+}
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #70BE5B;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+.openbtn:hover {
+    background-color: rgb(174, 233, 157);
+    color: black;
+    border: 2px solid rgb(54, 164, 81);
+}
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+/* Footer CSS */
+.footer {
+    min-height: 500px;
+    border-top: 4px solid #4E53A5;
+    padding: 10px 0px 20px 0px;
+}
+.footer a {
+    margin: 0px 5px;
+    display: inline-block;
+    font-size: 20px;
+    padding: 5px;
+}
+.footer a:hover {
+    color: black;
+    background-color: white;
+    text-decoration: underline;
+    font-size: 25px;
+}
+.footer svg {
+    margin-right: 5px;
+}
+.footer button {
+    justify-content: center;
+    border: 2px solid white;
+    margin: 10px
+}
+.footer button:hover {
+    background-color: #4E53A5;
+}
+.footerLine {
+    border-top: 2px solid white;
+}
+.footerBottom svg:hover {
+    color: #4E53A5;
+}
+/* Form CSS */
+form {
+    width: 100%;
+    margin: auto;
+    padding: 40px 10px;
+}
+form button {
+    margin-top: 30px
+}
+/* Bus Data CSS */
+#busStopData {
+    max-height: 50vh;
+    overflow: scroll;
+}
+#busStopData h3 {
+    padding-Top: 40px;
+}
+#busStopData p {
+    font-size: 18px;
+    padding: 1px;
+    color: #70BE5B;
+    margin: 0px;
+}
+#busStopData p:hover {
+    font-size: 22px;
+    padding: 1px;
+    color: #4E53A5;
+}
+/* Mapp CSS */
+#map {
+    width: 90%;
+    height: 400px;
+}
+
+/* Card CSS */
+.card a:hover {
+    background-color: #70BE5B;
+}
+
+.card {
+    width: 18rem
+}
+
+/* Employee Image CSS */
+.circular--landscape {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.circular--landscape img {
+    width: auto;
+    height: 190%;
+    margin-left: -80px;
+    margin-top: -20px;
+}
+.circular--landscape .geico {
+    width: auto;
+    height: 120%;
+    margin-left: -5px;
+    margin-top: -5px;
+
+}
+/* Carousel */
+.carousel {
+    min-height: 250px;
+    background-color: #DBF3FA ;
+}
+.carousel-indicators li {
+    display: inline-block;
+    height: 5px;
+    margin: 10px;
+    background-color: grey;
+}
+.carousel-indicators .active {
+    height: 5px;
+    margin: 10px;
+    background-color: #70BE5B;
+}
+/* Chart CSS */
+#mychart{
+    width: 200px;
+    height: 200px;
+}
+/* Colors CSS */
+.purpleBG {
+    background-color: #4E53A5;
+}
+.purple {
+    color: #4E53A5;
+}
+.yellowBG {
+    background-color: #FDF100;
+}
+.yellow{
+    color: #FDF100;
+}
+.greenBG {
+    background-color: #70BE5B;
+}
+.green {
+    color: #70BE5B;
+}
+.blueBG {
+    background-color: dodgerblue;
+}
+.blue {
+    color: dodgerblue;
+}
+.pinkBG {
+    background-color: #E2008A;
+}
+.pink {
+    color: #E2008A
+}
+
+
+/* Grow CSS */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+
+/* On smaller screens, where height is less than 450px */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+    #map {
+        margin: auto;
+        width: 80%;
+        height: 50vh;
+    }
+    .card {
+        width: 100%
+    }
+    
+}
+
+
+@media only screen and (max-width: 575px) {
+    footer div {
+        text-align: center;
+    }
+}
+
+
+.button-link {
+    font-size: "18px" !important;
+    color: #70BE5B !important;
+    font-weight: 700;
 }

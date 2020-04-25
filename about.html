@@ -2,619 +2,357 @@
 <html>
 
 <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Googlefonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/f805b78e67.js"></script>
-    <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        a {
-            font-family: 'Montserrat', sans-serif;
-        }
+	<title>About Looking Bus</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
 
-        h1 {
-            font-size: 50px;
-            font-weight: 400;
-
-        }
-
-        /* h3:hover {
-			font-size: 2rem;
-			font-weight: bold;
-		} */
-
-        p {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        /* p:hover {
-			font-size: 25px;
-			font-weight: 700;
-		} */
-        #grad {
-            background-image: linear-gradient(white, #4E53A5);
-        }
-
-        #company {
-            font-size: 40px;
-        }
-
-        #map {
-            height: 100%;
-        }
-
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .card a:hover {
-            background-color: #70BE5B;
-        }
-
-        .navbar {
-            min-height: 100px;
-        }
-
-        .purpleBG {
-            background-color: #4E53A5;
-        }
-
-        .purple {
-            color: #4E53A5;
-        }
-
-        .yellowBG {
-            background-color: #FDF100;
-        }
-
-        .greenBG {
-            background-color: #70BE5B;
-        }
-
-        .green {
-            color: #70BE5B;
-        }
-
-        .blueBG {
-            background-color: #68BBE5;
-        }
-
-        .pinkBG {
-            background-color: #E2008A;
-        }
-        .pink {
-            color: #E2008A;
-        }
-        .footer {
-            min-height: 500px;
-            border-top: 4px solid #4E53A5;
-            padding: 10px 0px 20px 0px;
-        }
-
-        .footer a {
-            margin: 0px 5px;
-            display: inline-block;
-            font-size: 20px;
-            padding: 5px;
-        }
-
-        .footer a:hover {
-            color: black;
-            background-color: white;
-            text-decoration: underline;
-            font-size: 25px;
-        }
-
-        .footer svg {
-            margin-right: 5px;
-        }
-
-        .footer button {
-            justify-content: center;
-            border: 2px solid white;
-            margin: 10px
-        }
-
-        .footer button:hover {
-            background-color: #4E53A5;
-
-
-        }
-
-        .footerLine {
-            border-top: 2px solid white;
-        }
-
-        .footerBottom svg:hover {
-            color: #4E53A5;
-        }
-
-
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #F0F0F0;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidebar a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: black;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            color: #70BE5B;
-            font-size: 30px;
-            font-weight: 700;
-        }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #70BE5B;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-        }
-
-        .openbtn:hover {
-            background-color: rgb(174, 233, 157);
-            color: black;
-            border: 2px solid rgb(54, 164, 81);
-        }
-
-        #main {
-            transition: margin-left .5s;
-            padding: 16px;
-        }
-
-        .navbar a {
-            color: #70BE5B;
-            margin: 0px 5px;
-            display: inline-block;
-            font-size: 20px;
-            padding: 5px;
-        }
-
-        .navbar a:hover {
-            color: #4E53A5;
-            text-decoration: underline;
-            font-size: 25px;
-        }
-
-        form {
-            width: 50%;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        .card {
-            width: 18rem
-        }
-
-        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-        @media screen and (max-height: 450px) {
-            .sidebar {
-                padding-top: 15px;
-            }
-
-            .sidebar a {
-                font-size: 18px;
-            }
-
-            .card {
-                width: 100%
-            }
-        }
-
-        /* Grow */
-        .hvr-grow {
-            display: inline-block;
-            vertical-align: middle;
-            transform: translateZ(0);
-            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-            backface-visibility: hidden;
-            -moz-osx-font-smoothing: grayscale;
-            transition-duration: 0.3s;
-            transition-property: transform;
-        }
-
-        .hvr-grow:hover,
-        .hvr-grow:focus,
-        .hvr-grow:active {
-            transform: scale(1.1);
-        }
-
-        @media only screen and (max-width: 575px) {
-            footer div {
-                text-align: center;
-            }
-        }
-
-        #firstgradient {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 90px 100vw 0 0;
-            border-color: #4E53A5 transparent transparent transparent;
-            transform: scale(1.0001);
-        }
-
-        .circular--landscape {
-            display: inline-block;
-            position: relative;
-            width: 150px;
-            height: 150px;
-            overflow: hidden;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        .circular--landscape img {
-            width: auto;
-            height: 190%;
-            margin-left: -80px;
-            margin-top: -20px;
-        }
-        .circular--landscape .geico {
-            width: auto;
-            height: 120%;
-            margin-left: -5px;
-            margin-top: -5px;
-
-        }
-    </style>
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Googlefonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<!-- Font Awesome -->
+	<script src="https://use.fontawesome.com/f805b78e67.js"></script>
 </head>
 
 <body>
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-        <a href="https://www.sfmta.com/" target="_blank">SF MTA</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Cities</a>
-        <a href="#">Contact</a>
-    </div>
-    <nav class="navbar navbar-light bg-light justify-content-around">
-        <div class="p-2" id="main">
-            <button class="openbtn" onclick="openNav()">☰</button>
-        </div>
-        <div class="p-2 text-white d-flex align-content-around d-inline-block">
-            <a href="https://www.lookingbus.com/">
-                <img src="https://img.icons8.com/plasticine/100/000000/bus.png" width="60" height="60"
-                    class="d-inline-block align-top" alt="">
-            </a>
-            <p id="company" class="green">LookingBus</p>
-            <div>
-            </div>
-        </div>
-        </div>
-        <div class="p-2">
-            <a href="https://www.lookingbus.com/">About</a>
-            <a href="https://www.lookingbus.com/">Press</a>
-            <a href="https://www.lookingbus.com/">Contact</a>
-        </div>
-    </nav>
-    </div>
-    <div class="container">
-        <div class=" p-2 pt-5">
-            <div>
-                <h3 class="purple pl-2 pr-2 text-center">
-                    <img width="35px" src="./icons/mission.png" alt="Target Symbol">
-                    Our Mission</h3>
-            </div>
-            
-            <p class="pl-2 pr-2">Making Public Transportation Accessible for People with Visual Impairments</p>
-            <h3 class="purple p-2 text-center">Making Public Transportation Smart</h3>
-            <p class="pl-2 pr-2">
-                LookingBus Smart City service improves the accessibility of public transportation for people with
-                disabilities, including people with visual impairments. Specifically, LookingBus addresses the challenge
-                of
-                boarding and disembarking (getting on/off the bus) by providing drivers with advanced notifications of
-                riders with disabilities at their upcoming stops. Our proprietary technology not only improves safety
-                and
-                reliability, but also customer experience, specifically for those who rely on fixed-route services.
-            </p>
-        </div>
-    </div>
-    <div id="grad">
-        <div class="container">
-            <h3 class="purple pl-2 pr-2 pt-5 text-center">
-                <img width="40px" src="https://img.icons8.com/cute-clipart/64/000000/news.png"/>
-                In the News</h3>
-            <div class="d-flex justify-content-around flex-row flex-wrap p-4">
-                <div class="card p-2 m-3">
-                    <img height="150px" class="card-img-top overflow-hidden"
-                        src="https://www.history.com/.image/t_share/MTY1MTc3MjE0MzExMDgxNTQ1/topic-golden-gate-bridge-gettyimages-177770941.jpg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="text-center card-title green font-weight-bold ">San Francisco</h4>
-                        <p class="card-text">In partnership with Bay Area Rapid Transit LookingBus has sucessfully
-                            completed a pilot program.</p>
-                        <a href="#" target="_blank" class="btn greenBG text-white">Learn More</a>
-                    </div>
-                </div>
-                <div class="card p-2 m-3">
-                    <img height="150px" class="card-img-top overflow-hidden"
-                        src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/2-downtown-detroit-michigan-skyline-denis-tangney-jr.jpg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="text-center card-title green font-weight-bold">Michigan</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="https://www.michigan.gov/mdot/0,4616,7-151-9621_17216_86614-479574--,00.html"
-                            target="_blank" class="btn greenBG text-white">Learn More</a>
-                    </div>
-                </div>
-                <div class="card p-2 m-3">
-                    <img height="150px" class="card-img-top overflow-hidden"
-                        src="https://www.theflightdeal.com/wp-content/uploads/2017/06/mexico_city_mexico_june-640x390.jpg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="text-center card-title green font-weight-bold">Mexico City</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="https://challenges.cityoftomorrow.com/challenge/mexico-city/refinar/lookingbus-looking-out-for-every-rider"
-                            target="_blank" class="btn greenBG text-white">Learn More</a>
-                    </div>
-                </div>
-                <div class="card p-2 m-3">
-                    <img height="150px" class="card-img-top overflow-hidden"
-                        src="https://media.gettyimages.com/photos/skyline-indianapolis-picture-id171527309?s=612x612"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="text-center card-title green font-weight-bold">Indianapolis</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="https://challenges.cityoftomorrow.com/challenge/indianapolis/propose/lookingbus"
-                            target="_blank" class="btn greenBG text-white">Learn More</a>
-                    </div>
-                </div>
-                <div class="card p-2 m-3">
-                    <img height="150px" class="card-img-top overflow-hidden"
-                        src="https://i.pinimg.com/originals/19/8e/6f/198e6fad7af113d80ebfca41ed14177a.jpg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="text-center card-title green font-weight-bold">Grand Rapids</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="https://challenges.cityoftomorrow.com/challenge/grand-rapids/refine/improving-public-transportation-for-riders-with-disabilities-through-smart-city-services"
-                            target="_blank" class="btn greenBG text-white">Learn More</a>
-                    </div>
-                </div>
-                <div class="card p-2 m-3">
-                    <img height="150px" class="card-img-top overflow-hidden"
-                        src="https://wp-media.petersons.com/blog/wp-content/uploads/2019/05/30111501/iStock-1127453938.jpg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="text-center card-title green font-weight-bold">Pittsburgh</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="https://challenges.cityoftomorrow.com/challenge/pittsburgh/refine/lookingbus"
-                            target="_blank" class="btn greenBG text-white">Learn More</a>
-                    </div>
-                </div>
-            </div>
+	<div id="aboutPage">
+		<div id="mySidebar" class="sidebar">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+			<a href="https://www.sfmta.com/" target="_blank">SF MTA</a>
+			<a href="about.html">About</a>
+			<a href="#">Services</a>
+			<a href="about.html#cities">Cities</a>
+			<a href="#">Contact</a>
+		</div>
+		<nav class="navbar navbar-light  bg-light justify-content-around">
+			<div class="p-2" id="main">
+				<button class="openbtn" onclick="openNav()">☰</button>
+			</div>
+			<div class="p-2 text-white d-flex align-content-around d-inline-block">
+				<a href="https://www.lookingbus.com/">
+					<img src="https://img.icons8.com/plasticine/100/000000/bus.png" width="60" height="60"
+						class="d-inline-block align-top" alt="">
+				</a>
+				<div id="company" class="green">LookingBus</div>
+				<div>
+				</div>
+			</div>
 
-        </div>
-    </div>
-    <div id="firstgradient"></div>
-    <div class="container">
-        <h3 class="purple pl-2 pr-2 text-center">
-            <img width="40px" src="https://img.icons8.com/dusk/64/000000/america.png" />
-            The Team
-        </h3>
-        <p class="purple  pl-2 pr-2 text-center">We are an early stage start up with teams across three continents!</p>
-        <div class="d-flex justify-content-around flex-row flex-wrap p-4">
-        <div>
-            <div class="circular--landscape">                
-                <img class="overflow-hidden" 
-                    src="https://miro.medium.com/max/1000/1*vKR5y-ZK1IL6ihOd9qOHJw.png" />
-            </div>
-            <p>Jake, State Farm</p>
-        </div>
-        <div>
-            <div class="circular--landscape">                
-                <img class="overflow-hidden" 
-                    src="https://vignette.wikia.nocookie.net/fictionalcrossover/images/6/63/Flo.jpg/revision/latest?cb=20131203224240" />
-            </div>
-            <p>Flo, Progressive</p>
-        </div>
-        <div>
-            <div class="circular--landscape">                
-                <img class="overflow-hidden geico" 
-                    src="https://www.pilotonline.com/resizer/DESvWEnrfOCKQNuexIcPPL1MYgg=/1200x1419/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GP2QQJ4SOVBCPPQ4KYNTKJZNKA.jpg" />
-            </div>
-            <p>Mike, GEICO</p>
-        </div>
-        </div>
-        <h3 class="purple pl-2 pr-2 text-center">
-            <img width="50px" src="https://img.icons8.com/plasticine/100/000000/like--v1.png" />
-            Our Values
-        </h3>
-        <div class="row p-2">
-            <div class="col-xs-12 pl-2 pr-2">
-                <p class="">Communication</p>
-                <p class="">We </p>
-            </div>
-            <div class="col-xs-12 pl-2 pr-2">
-                <p class="">Passion</p>
-                <p class="">We are passionate about the work we do and but our users at the forfront of every devision
-                    we make.</p>
-            </div>
-            <div class="col-xs-12 pl-2 pr-2">
-                <p class="">Curiosity</p>
-                <p class=""></p>
-            </div>
-        </div>
-        <h3 class="purple pl-2 pr-2 text-center">
-            <img width="50px" src="https://img.icons8.com/plasticine/100/000000/medal.png"/>Achomplishments
-        </h3>
-        <h3 class="purple pl-2 pr-2 text-center">
-            What people are saying
-        </h3>
+			<div class="p-2">
+				<a href="about.html">About</a>
+				<a href="about.html#press">Press</a>
+				<a href="about.html">Contact</a>
+			</div>
+		</nav>
+		<div class="container">
+			<div class=" p-2 pt-5">
+				<div>
+					<h3 class="purple pl-2 pr-2 text-center">
+						<img width="35px" src="./icons/mission.png" alt="Target Symbol">
+						Our Mission</h3>
+				</div>
+				<p class="pl-2 pr-2 text-center">Making Public Transportation Accessible for People with Visual Impairments</p>
+				<h3 class="purple p-2 text-center"><img width="30px" src="https://img.icons8.com/cotton/64/000000/trolleybus--v1.png"/>Making Public Transportation Smart</h3>
+				<p class="pl-2 pr-2 ">
+					LookingBus Smart City service improves the accessibility of public transportation for people with
+					disabilities, including people with visual impairments. Specifically, LookingBus addresses the
+					challenge of boarding and disembarking (getting on/off the bus) by providing drivers with advanced notifications of riders with disabilities at their upcoming stops. Our proprietary technology not only improves safety and reliability, but also customer experience, specifically for those who rely on fixed-route services.
+				</p>
+			</div>
+		</div>
+		<div id="grad">
+			<div class="container">
+				<a id="press">
+					<h3 class="purple pl-2 pr-2 pt-5 text-center">
 
-        <div  id="carouselExampleIndicators" class="carousel slide w-50 mx-auto mt-3" margin-auto data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
-                <p class="pl-2 pr-2 pink ">"LookingBus' proprietary technology not only improves safety and reliability, but customer
-                    experience as well, specifically for those who rely on fixed-route services...It's a realistic option for
-                    mobility-challenged populations. "</p>
-                <p class="text-center pink">- CATA CEO Bradley T. Funkhouser</p>  
-            </div>
-              <div class="carousel-item">
-                <p class="pl-2 pr-2 green">"LookingBus' proprietary technology not only improves safety and reliability, but customer
-                    experience as well, specifically for those who rely on fixed-route services...It's a realistic option for
-                    mobility-challenged populations. "</p>
-                <p class="text-center pink">- CATA CEO Bradley T. Funkhouser</p>  
-              </div>
-              <div class="carousel-item">
-                <p class="pl-2 pr-2 purple ">"LookingBus' proprietary technology not only improves safety and reliability, but customer
-                    experience as well, specifically for those who rely on fixed-route services...It's a realistic option for
-                    mobility-challenged populations. "</p>
-            <p class="text-center pink">- CATA CEO Bradley T. Funkhouser</p>                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        <h3 class="purple pl-2 pr-2 text-center">
-            <img width="35px" src="https://img.icons8.com/doodle/48/000000/user-location.png"/> Location
-        </h3>
-        <p class="pl-2 pr-2">Headquartered in Palo Alto, CA or Ann Arbor</p>
-    </div>
-    <footer class="footer greenBG text-white">
-        <div class="row pb-4">
-            <div class="col-xs-12 col-sm-2 col-md-6">
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2 pl-2 pr-2">
-                <h3 class="purple pt-5">Company</h3>
-                <a>About</a><br />
-                <a>Team</a><br />
-                <a>Values</a><br />
-                <a>Blog</a><br />
-                <a>Press</a><br />
-                <a>Jobs</a><br />
-                <a>Contact</a><br />
-                <a>FAQ</a><br />
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <h3 class="purple pt-5">Download the App</h3>
-                <button type="button" class="btn text-white btn-lg hvr-grow">
-                    <svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple"
-                        class="svg-inline--fa fa-apple fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 384 512">
-                        <path fill="currentColor"
-                            d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z">
-                        </path>
-                    </svg>
-                    Apple Store
-                </button>
-                <button type="button" class="btn text-white btn-lg hvr-grow">
-                    <svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play"
-                        class="svg-inline--fa fa-google-play fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512">
-                        <path fill="currentColor"
-                            d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
-                        </path>
-                    </svg>
-                    Google Play
-                </button>
-            </div>
-        </div>
-        <div class=".container-xl text-center footerLine pt-2 mt-2 footerBottom">
-            <div class="row pt-1">
-                <div class="col-xs-12 col-sm-1 col-md-2">
-                </div>
-                <div class="col-xs-12 col-sm-7 col-md-8 mt-3">
-                    <a>Privacy Policy</a>
-                    <a>Terms of service</a>
-                    <a>Additional Resources</a>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-2 mt-2">
-                    <svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
-                        data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" role="img"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path fill="currentColor"
-                            d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z">
-                        </path>
-                    </svg>
-                    <svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
-                        data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" role="img"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path fill="currentColor"
-                            d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
-                        </path>
-                    </svg>
-                    <svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"></path></svg>
-                    <svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram-square" class="svg-inline--fa fa-instagram-square fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"></path></svg>
-                </div>
-            </div>
-            <div>
-            </div>
-        </div>
-    </footer>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+						<img width="40px" src="https://img.icons8.com/cute-clipart/64/000000/news.png" />
+						In the News</h3>
+				</a>
+				<div class="d-flex justify-content-around flex-row flex-wrap p-4">
+					<div class="card p-2 m-3">
+						<img height="150px" class="card-img-top overflow-hidden"
+							src="https://www.history.com/.image/t_share/MTY1MTc3MjE0MzExMDgxNTQ1/topic-golden-gate-bridge-gettyimages-177770941.jpg"
+							alt="Card image cap">
+						<div class="card-body">
+							<h4 class="text-center card-title green font-weight-bold justify-content-center">San Francisco</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="text-center">
+									<a href="https://apps.trb.org/cmsfeed/TRBNetProjectDisplay.asp?ProjectID=4317" target="_blank"><button type="button" class="btn btn-success mx-auto d-inline-block m-2">Learn More</button></a>
+								</div>
+						</div>
+					</div>
+					<div class="card p-2 m-3">
+						<img height="150px" class="card-img-top overflow-hidden"
+							src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/2-downtown-detroit-michigan-skyline-denis-tangney-jr.jpg"
+							alt="Card image cap">
+						<div class="card-body">
+							<h4 class="text-center card-title green font-weight-bold">Michigan</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="text-center">
+									<a href="https://www.michigan.gov/mdot/0,4616,7-151-9621_17216_86614-479574--,00.html" target="_blank"><button type="button" class="btn btn-success mx-auto d-inline-block m-2">Learn More</button></a>
+								</div>
+						</div>
+					</div>
+					<div class="card p-2 m-3">
+						<img height="150px" class="card-img-top overflow-hidden"
+							src="https://www.theflightdeal.com/wp-content/uploads/2017/06/mexico_city_mexico_june-640x390.jpg"
+							alt="Card image cap">
+						<div class="card-body">
+							<h4 class="text-center card-title green font-weight-bold">Mexico City</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="text-center">
+									<a href="https://challenges.cityoftomorrow.com/challenge/mexico-city/refinar/lookingbus-looking-out-for-every-rider" target="_blank"><button type="button" class="btn btn-success mx-auto d-inline-block m-2">Learn More</button></a>
+								</div>
+						</div>
+					</div>
+					<div class="card p-2 m-3">
+						<img height="150px" class="card-img-top overflow-hidden"
+							src="https://media.gettyimages.com/photos/skyline-indianapolis-picture-id171527309?s=612x612"
+							alt="Card image cap">
+						<div class="card-body">
+							<h4 class="text-center card-title green font-weight-bold">Indianapolis</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="text-center">
+									<a href="https://challenges.cityoftomorrow.com/challenge/indianapolis/propose/lookingbus" target="_blank"><button type="button" class="btn btn-success mx-auto d-inline-block m-2">Learn More</button></a>
+								</div>
+						</div>
+					</div>
+					<div class="card p-2 m-3">
+						<img height="150px" class="card-img-top overflow-hidden"
+							src="https://i.pinimg.com/originals/19/8e/6f/198e6fad7af113d80ebfca41ed14177a.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="text-center card-title green font-weight-bold">Grand Rapids</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="text-center">
+									<a href="https://challenges.cityoftomorrow.com/challenge/grand-rapids/refine/improving-public-transportation-for-riders-with-disabilities-through-smart-city-services" target="_blank"><button type="button" class="btn btn-success mx-auto d-inline-block m-2">Learn More</button></a>
+								</div>
+						</div>
+					</div>
+					<div class="card p-2 m-3">
+						<img height="150px" class="card-img-top overflow-hidden"
+							src="https://wp-media.petersons.com/blog/wp-content/uploads/2019/05/30111501/iStock-1127453938.jpg"
+							alt="Card image cap">
+						<div class="card-body">
+							<h4 class="text-center card-title green font-weight-bold">Pittsburgh</h4>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="text-center">
+									<a href="https://challenges.cityoftomorrow.com/challenge/pittsburgh/refine/lookingbus" target="_blank"><button type="button" class="btn btn-success mx-auto d-inline-block m-2">Learn More</button></a>
+								</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div id="firstgradient"></div>
+		<div class="container">
+			<h3 class="purple pl-2 pr-2 text-center">
+				<img width="40px" src="https://img.icons8.com/dusk/64/000000/america.png" />
+				The Team
+			</h3>
+			<p class="  pl-2 pr-2 text-center">We are an early stage start up with teams across three continents!
+			</p>
+			<div class="d-flex justify-content-around flex-row flex-wrap p-4">
+				<div>
+					<div class="circular--landscape">
+						<img class="overflow-hidden" src="https://miro.medium.com/max/1000/1*vKR5y-ZK1IL6ihOd9qOHJw.png" />
+					</div>
+					<p class="blue">Jake, State Farm</p>
+				</div>
+				<div>
+					<div class="circular--landscape">
+						<img class="overflow-hidden"
+							src="https://vignette.wikia.nocookie.net/fictionalcrossover/images/6/63/Flo.jpg/revision/latest?cb=20131203224240" />
+					</div>
+					<p class="blue">Flo, Progressive</p>
+				</div>
+				<div>
+					<div class="circular--landscape">
+						<img class="overflow-hidden geico"
+							src="https://www.pilotonline.com/resizer/DESvWEnrfOCKQNuexIcPPL1MYgg=/1200x1419/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GP2QQJ4SOVBCPPQ4KYNTKJZNKA.jpg" />
+					</div>
+					<p class="blue">Mike, GEICO</p>
+				</div>
+			</div>
+			<h3 class="purple pl-2 pr-2 text-center">
+				<img width="50px" src="https://img.icons8.com/plasticine/100/000000/like--v1.png" />
+				Our Values
+			</h3>
+			<div class="row d-flex flex-wrap justify-content-around p-2 m-2">
+				<div class="card m-2" >
+					<img width="25%" src="icons/team.png" alt="Three Teammates"   />
+					<h4 class="green text-center">Collaboration</h4>
+					<p class="">We </p>
+					</div>
+				
+				<div class="card m-2" >
+					<img class="card-img-top" src="..." alt="Card image cap">
+					<h4 class="green text-center">Purpose</h4>
+					<p class="">We are passionate about the work we do and but our users at the forfront of every
+						devision
+						we make.</p>
+				</div>
+				<div class="card m-2" >
+					<p class="green text-center">Curiosity</p>
+					<p class=""></p>
+				</div>
+
+			</div>
+			
+			<h3 class="purple pl-2 pr-2 text-center">
+				<img width="50px" src="https://img.icons8.com/plasticine/100/000000/medal.png" />Achomplishments
+			</h3>
+			<h4 class="pl-2 pr-2 text-center">
+				What people are saying
+			</h4>
+
+			<div id="carouselExampleIndicators" class="carousel slide w-50 mx-auto mt-3 p-2" margin-auto data-ride="carousel">
+				<ol class="carousel-indicators ">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active "></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active p-3">
+						<p>"LookingBus' proprietary technology not only improves safety and
+							reliability, but customer
+							experience as well, specifically for those who rely on fixed-route services...It's a
+							realistic
+							option for
+							mobility-challenged populations. "</p>
+						<p class="text-center ">- CATA CEO Bradley T. Funkhouser, Michigan</p>
+					</div>
+					<div class="carousel-item p-3">
+						<p >"LookingBus' proprietary technology not only improves safety and
+							reliability, but customer
+							experience as well, specifically for those who rely on fixed-route services...It's a
+							realistic
+							option for
+							mobility-challenged populations. "</p>
+						<p class="text-center ">- Jane Smith, New York</p>
+					</div>
+					<div class="carousel-item p-3">
+						<p >"LookingBus' proprietary technology not only improves safety and
+							reliability, but customer
+							experience as well, specifically for those who rely on fixed-route services...It's a
+							realistic
+							option for
+							mobility-challenged populations. "</p>
+						<p class="text-center pink">- John Smith, California</p>
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			<a id="cities">
+				<h3 class="purple pl-2 pr-2 text-center pt-2">
+					<img width="35px" src="https://img.icons8.com/doodle/48/000000/user-location.png" /> Location
+				</h3>
+			</a>
+			<p class="pl-2 pr-2 green text-center pb-2">Headquartered in Sunny ☀️ Palo Alto, California 🐻</p>
+		</div>
+		<footer class="footer greenBG text-white">
+			<div class="row pb-4">
+				<div class="col-xs-12 col-sm-2 col-md-6">
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-2 pl-2 pr-2">
+					<h3 class="purple pt-5">Company</h3>
+					<a>About</a><br />
+					<a>Team</a><br />
+					<a>Values</a><br />
+					<a>Blog</a><br />
+					<a>Press</a><br />
+					<a>Jobs</a><br />
+					<a>Contact</a><br />
+					<a>FAQ</a><br />
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<h3 class="purple pt-5">Download the App</h3>
+					<button type="button" class="btn text-white btn-lg hvr-grow">
+						<svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple"
+							class="svg-inline--fa fa-apple fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 384 512">
+							<path fill="currentColor"
+								d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z">
+							</path>
+						</svg>
+						Apple Store
+					</button>
+					<button type="button" class="btn text-white btn-lg hvr-grow">
+						<svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google-play"
+							class="svg-inline--fa fa-google-play fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 512 512">
+							<path fill="currentColor"
+								d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z">
+							</path>
+						</svg>
+						Google Play
+					</button>
+				</div>
+			</div>
+			<div class=".container-xl text-center footerLine pt-2 mt-2 footerBottom">
+				<div class="row pt-1">
+					<div class="col-xs-12 col-sm-1 col-md-2">
+					</div>
+					<div class="col-xs-12 col-sm-7 col-md-8 mt-3">
+						<a>Privacy Policy</a>
+						<a>Terms of service</a>
+						<a>Additional Resources</a>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-2 mt-2">
+						<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
+							data-icon="facebook-square" class="svg-inline--fa fa-facebook-square fa-w-14" role="img"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+							<path fill="currentColor"
+								d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z">
+							</path>
+						</svg>
+						<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
+							data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" role="img"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+							<path fill="currentColor"
+								d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
+							</path>
+						</svg>
+						<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
+							data-icon="twitter-square" class="svg-inline--fa fa-twitter-square fa-w-14" role="img"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+							<path fill="currentColor"
+								d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z">
+							</path>
+						</svg>
+						<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
+							data-icon="instagram-square" class="svg-inline--fa fa-instagram-square fa-w-14" role="img"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+							<path fill="currentColor"
+								d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z">
+							</path>
+						</svg>
+					</div>
+				</div>
+				<div>
+				</div>
+			</div>
+		</footer>
+		<!-- Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"></script>
+	</div>
 </body>
 <script type="text/javascript" src="index.js"></script>
 
