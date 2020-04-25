@@ -12,6 +12,7 @@
 ## Technologies
 - HTML
 - CSS
+- Bootstrap
 - Javascript
 - JQuery
 - [Chart.js](https://www.chartjs.org/)
@@ -31,7 +32,4 @@
     * <a href="https://icons8.com/icon/86945/trolleybus">Trolleybus icon by Icons8</a>
     * Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
     * Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-- Images
-    
-
-    2.11 API: Real-time Vehicle Monitoring (Pg. 32)
+    * Font Awesome
