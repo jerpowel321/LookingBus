@@ -10,10 +10,11 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="style.css">
-	<!-- Googlefonts -->
+	<!-- Googlefonts CDN -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-	<!-- Font Awesome -->
-	<script src="https://use.fontawesome.com/f805b78e67.js"></script>
+	<!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,10 +22,10 @@
 		<div id="mySidebar" class="sidebar">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
 			<a href="https://www.sfmta.com/" target="_blank">SF MTA</a>
-			<a href="about.html">About</a>
-			<a href="#">Services</a>
-			<a href="about.html#cities">Cities</a>
-			<a href="#">Contact</a>
+			<a href="about.html" target="_blank">About</a>
+			<a href="index.html">Services</a>
+			<a href="about.html#cities" target="_blank">Cities</a>
+			<a href="contact.html" target="_blank">Contact</a>
 		</div>
 		<nav class="navbar navbar-light  bg-light justify-content-around">
 			<div class="p-2" id="main">
@@ -33,7 +34,7 @@
 			<div class="p-2 text-white d-flex align-content-around d-inline-block">
 				<a href="https://www.lookingbus.com/">
 					<img src="https://img.icons8.com/plasticine/100/000000/bus.png" width="60" height="60"
-						class="d-inline-block align-top" alt="">
+						class="d-inline-block align-top" alt="Yellow Bus">
 				</a>
 				<div id="company" class="green">LookingBus</div>
 				<div>
@@ -41,20 +42,20 @@
 			</div>
 
 			<div class="p-2">
-				<a href="about.html">About</a>
-				<a href="about.html#press">Press</a>
-				<a href="about.html">Contact</a>
+				<a href="about.html" target="_blank">About</a>
+				<a href="about.html#press" target="_blank">Press</a>
+				<a href="contact.html" target="_blank">Contact</a>
 			</div>
 		</nav>
 		<div class="container">
 			<div class=" p-2 pt-5">
 				<div>
-					<h3 class="purple pl-2 pr-2 text-center">
+					<h3 class="purple pl-2 pr-2 text-center mt-2">
 						<img width="35px" src="./icons/mission.png" alt="Target Symbol">
 						Our Mission</h3>
 				</div>
 				<p class="pl-2 pr-2 text-center">Making Public Transportation Accessible for People with Visual Impairments</p>
-				<h3 class="purple p-2 text-center"><img width="30px" src="https://img.icons8.com/cotton/64/000000/trolleybus--v1.png"/>Making Public Transportation Smart</h3>
+				<h3 class="purple p-2 text-center mt-5"><img width="30px" src="https://img.icons8.com/cotton/64/000000/trolleybus--v1.png" alt="Bus" />Making Public Transportation Smart</h3>
 				<p class="pl-2 pr-2 ">
 					LookingBus Smart City service improves the accessibility of public transportation for people with
 					disabilities, including people with visual impairments. Specifically, LookingBus addresses the
@@ -65,16 +66,15 @@
 		<div id="grad">
 			<div class="container">
 				<a id="press">
-					<h3 class="purple pl-2 pr-2 pt-5 text-center">
-
-						<img width="40px" src="https://img.icons8.com/cute-clipart/64/000000/news.png" />
+					<h3 class="purple pl-2 pr-2 pt-2 text-center">
+						<img width="40px" src="https://img.icons8.com/cute-clipart/64/000000/news.png" alt="Newspaper" />
 						In the News</h3>
 				</a>
 				<div class="d-flex justify-content-around flex-row flex-wrap p-4">
 					<div class="card p-2 m-3">
 						<img height="150px" class="card-img-top overflow-hidden"
 							src="https://www.history.com/.image/t_share/MTY1MTc3MjE0MzExMDgxNTQ1/topic-golden-gate-bridge-gettyimages-177770941.jpg"
-							alt="Card image cap">
+							alt="Golden Gate Bridge">
 						<div class="card-body">
 							<h4 class="text-center card-title green font-weight-bold justify-content-center">San Francisco</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -86,7 +86,7 @@
 					<div class="card p-2 m-3">
 						<img height="150px" class="card-img-top overflow-hidden"
 							src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/2-downtown-detroit-michigan-skyline-denis-tangney-jr.jpg"
-							alt="Card image cap">
+							alt="Michigan Skyline">
 						<div class="card-body">
 							<h4 class="text-center card-title green font-weight-bold">Michigan</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -98,7 +98,7 @@
 					<div class="card p-2 m-3">
 						<img height="150px" class="card-img-top overflow-hidden"
 							src="https://www.theflightdeal.com/wp-content/uploads/2017/06/mexico_city_mexico_june-640x390.jpg"
-							alt="Card image cap">
+							alt="Mexico City Center">
 						<div class="card-body">
 							<h4 class="text-center card-title green font-weight-bold">Mexico City</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -110,7 +110,7 @@
 					<div class="card p-2 m-3">
 						<img height="150px" class="card-img-top overflow-hidden"
 							src="https://media.gettyimages.com/photos/skyline-indianapolis-picture-id171527309?s=612x612"
-							alt="Card image cap">
+							alt="Indianapolis Skyline">
 						<div class="card-body">
 							<h4 class="text-center card-title green font-weight-bold">Indianapolis</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -121,7 +121,7 @@
 					</div>
 					<div class="card p-2 m-3">
 						<img height="150px" class="card-img-top overflow-hidden"
-							src="https://i.pinimg.com/originals/19/8e/6f/198e6fad7af113d80ebfca41ed14177a.jpg" alt="Card image cap">
+							src="https://i.pinimg.com/originals/19/8e/6f/198e6fad7af113d80ebfca41ed14177a.jpg" alt="Grand Rapids Skyline">
 						<div class="card-body">
 							<h4 class="text-center card-title green font-weight-bold">Grand Rapids</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -133,7 +133,7 @@
 					<div class="card p-2 m-3">
 						<img height="150px" class="card-img-top overflow-hidden"
 							src="https://wp-media.petersons.com/blog/wp-content/uploads/2019/05/30111501/iStock-1127453938.jpg"
-							alt="Card image cap">
+							alt="Pittsburgh Skyline">
 						<div class="card-body">
 							<h4 class="text-center card-title green font-weight-bold">Pittsburgh</h4>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -148,65 +148,69 @@
 		</div>
 		<div id="firstgradient"></div>
 		<div class="container">
-			<h3 class="purple pl-2 pr-2 text-center">
+			<a id="team">
+			<h3 class="purple pl-2 pr-2 text-center pt-5">
 				<img width="40px" src="https://img.icons8.com/dusk/64/000000/america.png" />
 				The Team
 			</h3>
+		</a>
 			<p class="  pl-2 pr-2 text-center">We are an early stage start up with teams across three continents!
 			</p>
 			<div class="d-flex justify-content-around flex-row flex-wrap p-4">
 				<div>
 					<div class="circular--landscape">
-						<img class="overflow-hidden" src="https://miro.medium.com/max/1000/1*vKR5y-ZK1IL6ihOd9qOHJw.png" />
+						<img class="overflow-hidden" src="https://miro.medium.com/max/1000/1*vKR5y-ZK1IL6ihOd9qOHJw.png" alt="Jake from State Farm" />
 					</div>
 					<p class="blue">Jake, State Farm</p>
 				</div>
 				<div>
 					<div class="circular--landscape">
 						<img class="overflow-hidden"
-							src="https://vignette.wikia.nocookie.net/fictionalcrossover/images/6/63/Flo.jpg/revision/latest?cb=20131203224240" />
+							src="https://vignette.wikia.nocookie.net/fictionalcrossover/images/6/63/Flo.jpg/revision/latest?cb=20131203224240" alt="Flo from Progessive" />
 					</div>
 					<p class="blue">Flo, Progressive</p>
 				</div>
 				<div>
 					<div class="circular--landscape">
 						<img class="overflow-hidden geico"
-							src="https://www.pilotonline.com/resizer/DESvWEnrfOCKQNuexIcPPL1MYgg=/1200x1419/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GP2QQJ4SOVBCPPQ4KYNTKJZNKA.jpg" />
+							src="https://www.pilotonline.com/resizer/DESvWEnrfOCKQNuexIcPPL1MYgg=/1200x1419/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GP2QQJ4SOVBCPPQ4KYNTKJZNKA.jpg" alt="Another Jake from State Farm" />
 					</div>
 					<p class="blue">Mike, GEICO</p>
 				</div>
 			</div>
-			<h3 class="purple pl-2 pr-2 text-center">
-				<img width="50px" src="https://img.icons8.com/plasticine/100/000000/like--v1.png" />
+			<a id="values">
+			<h3 class="purple pl-2 pr-2 text-center pt-3">
+				<img width="50px" src="https://img.icons8.com/plasticine/100/000000/like--v1.png" alt="Heart" />
 				Our Values
 			</h3>
-			<div class="row d-flex flex-wrap justify-content-around p-2 m-2">
-				<div class="card m-2" >
-					<img width="25%" src="icons/team.png" alt="Three Teammates"   />
-					<h4 class="green text-center">Collaboration</h4>
-					<p class="">We </p>
-					</div>
-				
-				<div class="card m-2" >
-					<img class="card-img-top" src="..." alt="Card image cap">
-					<h4 class="green text-center">Purpose</h4>
-					<p class="">We are passionate about the work we do and but our users at the forfront of every
-						devision
-						we make.</p>
+		</a>
+			<div class="row d-flex flex-wrap justify-content-around p-2 m-2 mt-3">
+				<div class="card m-2 border-0" >
+					<i class="fas fa-4x fa-hands-helping mx-auto pink"></i>
+					<h4 class="green text-center pt-3">Collaboration</h4>
+					<p class="">We work best as a team and share knowledge with one another. </p>
 				</div>
-				<div class="card m-2" >
-					<p class="green text-center">Curiosity</p>
-					<p class=""></p>
+				
+				<div class="card m-2 border-0" >
+					<i class="fas fa-4x fa-heart mx-auto pink"></i>
+					<h4 class="green text-center pt-3">Passion</h4>
+					<p class="">We are passionate about the work we do and put our users at the forfront of every
+						devision we make.</p>
+				</div>
+				<div class="card m-2 border-0" >
+					<i class="fas fa-4x fa-code mx-auto pink"></i>
+					<h4 class="green text-center pt-3">Innovation</h4>
+					<p class=""> Employees are encouraged to innovate and think big. No idea is too small to consider.</p>
 				</div>
 
 			</div>
 			
-			<h3 class="purple pl-2 pr-2 text-center">
-				<img width="50px" src="https://img.icons8.com/plasticine/100/000000/medal.png" />Achomplishments
+			<h3 class="purple pl-2 pr-2 text-center pt-3">
+				<img width="50px" src="https://img.icons8.com/plasticine/100/000000/medal.png" alt="Medal" />Achomplishments
 			</h3>
-			<h4 class="pl-2 pr-2 text-center">
+			<h5 class="pl-2 pr-2 text-center">
 				What people are saying
-			</h4>
+			</h5>
 
 			<div id="carouselExampleIndicators" class="carousel slide w-50 mx-auto mt-3 p-2" margin-auto data-ride="carousel">
 				<ol class="carousel-indicators ">
@@ -253,11 +257,11 @@
 				</a>
 			</div>
 			<a id="cities">
-				<h3 class="purple pl-2 pr-2 text-center pt-2">
-					<img width="35px" src="https://img.icons8.com/doodle/48/000000/user-location.png" /> Location
+				<h3 class="purple pl-2 pr-2 text-center pt-5">
+					<img width="35px" src="https://img.icons8.com/doodle/48/000000/user-location.png" alt="Location Pin" /> Location
 				</h3>
 			</a>
-			<p class="pl-2 pr-2 green text-center pb-2">Headquartered in Sunny ☀️ Palo Alto, California 🐻</p>
+			<p class="pl-2 pr-2  text-center pb-5">Headquartered in Sunny ☀️ Palo Alto, California 🐻</p>
 		</div>
 		<footer class="footer greenBG text-white">
 			<div class="row pb-4">
@@ -265,13 +269,12 @@
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-2 pl-2 pr-2">
 					<h3 class="purple pt-5">Company</h3>
-					<a>About</a><br />
-					<a>Team</a><br />
-					<a>Values</a><br />
-					<a>Blog</a><br />
-					<a>Press</a><br />
+					<a href="about.html" target="_blank">About</a><br />
+					<a href="about.html#team" target="_blank">Team</a><br />
+					<a href="about.html#values" target="_blank">Values</a><br />
+					<a href="about.html#press"> target="_blank"Press</a><br />
 					<a>Jobs</a><br />
-					<a>Contact</a><br />
+					<a href="contact.html" target="_blank">Contact</a><br />
 					<a>FAQ</a><br />
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-4">

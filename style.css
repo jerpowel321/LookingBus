@@ -135,6 +135,7 @@ p:hover {
     display: inline-block;
     font-size: 20px;
     padding: 5px;
+    color: white;
 }
 .footer a:hover {
     color: black;
@@ -229,7 +230,7 @@ form button {
 /* Carousel */
 .carousel {
     min-height: 250px;
-    background-color: #DBF3FA ;
+    background-color: rgba(112, 190, 91, 0.084);
 }
 .carousel-indicators li {
     display: inline-block;
@@ -278,7 +279,12 @@ form button {
 .pink {
     color: #E2008A
 }
-
+.grey {
+    color: #F0F0F0
+}
+.greyBG {
+    background-color:  #F0F0F0;
+}
 
 /* Grow CSS */
 .hvr-grow {
