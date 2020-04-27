@@ -31,9 +31,11 @@ Doccumentation for 511.org API can be found [here](https://511.org/sites/default
     
 1) API: Operator (pg. 9)
 Per API doccumentation: "Operator within a jurisdiction represents a company providing public transport services. Consumers can request a list of all the operators within the jurisdiction or they can use additional filters such as operator code/id to restrict the results as per their needs and use case."
+
 Request Endpoint:
-    http://api.511.org/transit/operators?api_key={your-key}
-                ```
+
+http://api.511.org/transit/operators?api_key={your-key}
+                
 Response includes a list of operators 
 Exmaple of Operator Data   
 
@@ -53,8 +55,10 @@ Exmaple of Operator Data
 
 2) API: Line (pg.11)
 Per API doccumentation: "Lines are routes covered by transit operators within the jurisdiction. Consumers can request list of all the routes within an operator or they can use additional filters like line id to restrict the results as per their needs and use case."
+
 Request Endpoint: 
-    http://api.511.org/transit/lines?api_key={your-key}&operator_id=SF
+
+http://api.511.org/transit/lines?api_key={your-key}&operator_id=SF
 
 Response includes a list of Lines for SF MTA
 Exmaple of Line Data 
@@ -73,9 +77,11 @@ Exmaple of Line Data
 
 3) API: Stop (pg. 13)
 Per API doccumentation: "Stop or ScheduledStopPoint is a location where passengers can board or alight from vehicles. Consumers can request list of all the stops serviced by an agency/operator within the jurisdiction. Stop groupings or StopAreas are also returned when specifically requested using the include_stop_areas parameter."
+
 Request Endpoint: 
-    http://api.511.org/transit/stops?api_key={your-key}&operator_id=SF&Line_id=LBUS
-                ```
+
+http://api.511.org/transit/stops?api_key={your-key}&operator_id=SF&Line_id=LBUS
+            
 Response includes a list of Scheduled Stop Points for the LBUS line
 Exmaple of Stop Data   
 
@@ -93,10 +99,13 @@ Exmaple of Stop Data
 
 4) API: Real-time Vehicle Monitoring (pg. 32)
 Per API doccumentation: "Siri Vehicle monitoring service provides information about current location and expected activities of a particular vehicle. It also provides details for current and subsequent Journey patterns."
-Request Endpoint:
-    http://api.511.org/transit/VehicleMonitoring?api_key={your-key}&agency=SF
 
-Response includes a list of vehicles currently being monitored for the SF MTA
+Request Endpoint:
+
+http://api.511.org/transit/VehicleMonitoring?api_key={your-key}&agency=SF
+
+Response includes a list of vehicles currently being monitored for the SFMTA
+
 Example of Vehicle Real Time Data
 
     ```javascript
@@ -156,9 +165,11 @@ Example of Vehicle Real Time Data
     ```
 
 Note: Vehicles may be used on different routes each day, therefore a vehicleID of 8655 may be used on an LBUS line one day and a 14 bus line the next. Once a vehicle ID number is picked, use the vehicleID in the request parameter to narrow down the results.
+
 Request Endpoint:
-    http://api.511.org/transit/VehicleMonitoring?api_key={your-key}&agency=SF&vehicleID=8655
-                ```
+
+http://api.511.org/transit/VehicleMonitoring?api_key={your-key}&agency=SF&vehicleID=8655
+
 
 
 
@@ -170,7 +181,7 @@ The time it takes for a bus to drive between two stops is calculated based on th
 
 The speed is calculated by getting the distance/time.
 
-## 🔧Technologies
+## 🔧 Technologies
 - HTML
 - CSS
 - Bootstrap
@@ -180,7 +191,7 @@ The speed is calculated by getting the distance/time.
 - Google Maps JavaScript API
 - [511 SF Bay Area Public Transit Open Data](https://511.org/open-data)
 
-## ✨Credits
+## ✨ Credits
 - Icons
     * <a href="https://icons8.com/icon/Y8iLfEJeABbG/bus">Bus icon by Icons8</a>
     * <a href="https://icons8.com/icon/JtFPaMeryYel/america">America icon by Icons8</a>
