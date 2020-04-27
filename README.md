@@ -33,11 +33,11 @@ Doccumentation for 511.org API can be found [here](https://511.org/sites/default
 
 Per API doccumentation: "Operator within a jurisdiction represents a company providing public transport services. Consumers can request a list of all the operators within the jurisdiction or they can use additional filters such as operator code/id to restrict the results as per their needs and use case."
 
-    <b>Request Endpoint:</b> http://api.511.org/transit/operators?api_key={your-key}
+<b>Request Endpoint:</b> http://api.511.org/transit/operators?api_key={your-key}
        
-    Response includes a list of operators 
+Response includes a list of operators 
     
-        Exmaple of Operator Data   
+    Exmaple of Operator Data   
 
         ```javascript
         {
