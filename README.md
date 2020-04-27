@@ -37,9 +37,8 @@ Per API doccumentation: "Operator within a jurisdiction represents a company pro
        
 Response includes a list of operators 
     
-	Exmaple of Operator Data   
+Exmaple of Operator Data   
 
-			```
 			{
 				"Id": "SF"
 				"Montiored": true
@@ -51,7 +50,6 @@ Response includes a list of operators
 				"TimeZone": "America/Vancouver"
 				"WebSite": "https://SFMTA.com"
 			}
-			```
 
 2) API: Line (pg.11)
 Per API doccumentation: "Lines are routes covered by transit operators within the jurisdiction. Consumers can request list of all the routes within an operator or they can use additional filters like line id to restrict the results as per their needs and use case."
