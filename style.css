@@ -125,6 +125,7 @@ p:hover {
 #main {
     transition: margin-left .5s;
     padding: 16px;
+    width: 300px;
 }
 
 /* Footer CSS */
@@ -180,7 +181,7 @@ form button {
 #busStopData h3 {
     padding-Top: 40px;
 }
-#busStopData p {
+#busStopData p, #busInfo p {
     font-size: 18px;
     padding: 1px;
     color: #70BE5B;
@@ -191,6 +192,7 @@ form button {
     padding: 1px;
     color: #4E53A5;
 }
+
 /* Mapp CSS */
 #map {
     width: 90%;
@@ -323,13 +325,18 @@ form button {
     .card {
         width: 100%
     }
-    
+    #main {
+        width: 50px;
+    }
 }
 
 
 @media only screen and (max-width: 575px) {
     footer div {
         text-align: center;
+    }
+    #main {
+        width: 50px;
     }
 }
 

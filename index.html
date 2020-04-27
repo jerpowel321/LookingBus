@@ -6,20 +6,20 @@
 	<meta name="viewport" content="initial-scale=1.0">
 	<meta charset="utf-8">
 	<script src='./config.js'></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Googlefonts CDN -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<!-- Font Awesome CDN -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<!-- Bootstrap CDN -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="style.css">
-
-	<!-- Googlefonts CDN -->
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-	<!-- JQuery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" type="text/javascript"></script>
-	<!-- Chart.js -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body>
@@ -65,7 +65,7 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 
 			<div class="row">
 				<form id="form" class="greyBG w-75 p-4">
-					
+
 					<div class="row d-flex flex-row flex-wrap justify-content-center">
 						<div class="col-xs-12 col-sm-10 col-md-10 m-2">
 							<div class="ml-5 mr-5">
@@ -143,8 +143,54 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 					</div>
 				</form>
 			</div>
-			<div class="row">
-				<div id="map" class="ml-1 mr-2 mt-2 mb-2"></div>
+			<div class="row mx-auto ">
+				<div id="busInfo" class="mx-auto mt-5 mb-3"></div>
+				<div id="map" class="mx-auto mt-5 mb-3"></div>
+				<div class="accordion" id="accordionExample">
+					<div class="card">
+						<div class="card-header" id="headingOne">
+							<h2 class="mb-0">
+								<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									Collapsible Group Item #1
+								</button>
+							</h2>
+						</div>
+				
+						<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+							<div class="card-body">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingTwo">
+							<h2 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Collapsible Group Item #2
+								</button>
+							</h2>
+						</div>
+						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+							<div class="card-body">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" id="headingThree">
+							<h2 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Collapsible Group Item #3
+								</button>
+							</h2>
+						</div>
+						<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+							<div class="card-body">
+								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row ">
 				<div id="accordion" class="mt-2 mb-2 w-100">
@@ -261,36 +307,14 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 </body>
 <script>
 	let userLocation = [37.7897, -122.3972];
-	let averageSpeed = [5, 10, 7, 3, 10, 5, 2, 2, 1, 2];
+	let averageSpeed = [0];
 	let distance = [10, 10, 20, 30, 40, 10, 15, 10, 50, 10];
-	function geoFindMe() {
-		const status = document.querySelector('#status');
-
-		function success(position) {
-			userLocation = [];
-			const latitude = position.coords.latitude
-			const longitude = position.coords.longitude
-			userLocation.push(latitude)
-			userLocation.push(longitude)
-			console.log(userLocation)
-			status.textContent = '';
-		}
-
-		function error() {
-			status.textContent = 'Unable to retrieve your location';
-		}
-
-		if (!navigator.geolocation) {
-			status.textContent = 'Geolocation is not supported by your browser';
-		} else {
-			status.textContent = 'Locating…';
-			navigator.geolocation.getCurrentPosition(success, error);
-		}
-
-	}
-
-	document.querySelector('#find-me').addEventListener('click', geoFindMe);
-
+	let time = [0]
+	let busStopsArray = [];
+	let t = [];
+	let departureTimesArray = [];
+	let distTwoStopsArray = [];
+	let timeBetweenTwoStopsArray = [];
 
 	// Adding a click event listener to the search button
 	$("#searchRoute").on("click", function (event) {
@@ -300,12 +324,13 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 		let operatorId = $("select#agency option:checked").val()
 		let route = $("select#line option:checked").val()
 		// padding the operator ID and route to getBusStops function which retrieves the bus stop location from 511.org 
-		getBusStops(operatorId, route);
+		// getBusStops(operatorId, route);
 	});
 
 	// Set up the inital map screen
 	var map;
 
+	// Function to display the initial google map getting bus stops for the LBUS route from SFMTA
 	function initMap() {
 		let operatorId = "SF"
 		let route = "LBUS"
@@ -316,7 +341,7 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 	function getBusStops(operatorId, route) {
 		var operator = "&operator_id=" + operatorId
 		var busRoute = "&Line_id=" + route
-		var API_Key = _____________
+		var API_Key = ""
 		var BASEURL = "http://api.511.org/transit/stops?api_key="
 		var queryURL = BASEURL + API_Key + operator + busRoute
 		let location;
@@ -342,18 +367,22 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
 			var infowindow = new google.maps.InfoWindow();
-			// Display Markers by interating through the dataBusStops array
+			// Display Bus Stop Markers by interating through the dataBusStops array
 			var marker, i;
+			busStopsArray = [];
 			for (i = 0; i < dataBusStops.length; i++) {
 				// Pick out the data we want to use 
-				let name = dataBusStops[i]["Name"]
 				let lat = dataBusStops[i]["Location"]["Latitude"]
 				let lng = dataBusStops[i]["Location"]["Longitude"]
-				let busStopId = dataBusStops[i]["id"]
-				let id = [i]
-				let stop = [name, lat, lng, id, busStopId]
-				let icon = "https://img.icons8.com/office/40/000000/map-pin.png"
+				let latNum = Number(lat)
+				let lngNum = Number(lng)
+				let name = dataBusStops[i]["Name"]
 				let title = "Bus Stop"
+				let busStopId = dataBusStops[i]["id"]
+				let icon = "https://img.icons8.com/office/40/000000/map-pin.png"
+				let stop = [latNum, lngNum, name, title, busStopId]
+				// push the bus stop data into the BusStopsArray 
+				busStopsArray.push(stop)
 				// Pass the lattitude, longitude, map, title, icon, name and i to the displayMarker function
 				displayMarker(lat, lng, map, title, icon, name, i)
 				// create a p element displaying the bus stop name
@@ -361,34 +390,16 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 				// Display uner the #busStopData Div
 				$("#busStopData").append(p);
 			}
-			// Display user location
-			let lat = userLocation[0]
-			let lng = userLocation[1]
-			let title = "You are here"
-			let icon = "https://img.icons8.com/emoji/48/000000/star-emoji.png"
-			let here = "Your Location"
-			console.log("hello")
-			console.log(lat)
-			console.log(lng)
-			console.log(title)
-			console.log(icon)
-			console.log(name)
-			displayMarker(userLocation[0], userLocation[1], map, "You are here", "https://img.icons8.com/emoji/48/000000/star-emoji.png", "Your Location", 200)
+			// Display user location marker and assign it index 250
+			displayMarker(userLocation[0], userLocation[1], map, "You are here", "https://img.icons8.com/emoji/48/000000/star-emoji.png", "Your Location", 250)
 			// Get the bus location and show it on the Map
 			getBus(map)
 		}
 		)
 	}
+
 	// function to display draggable markers on the map 
 	function displayMarker(lat, lng, map, title, icon, name, i) {
-		console.log(lat)
-		console.log(lng)
-		console.log(title)
-		console.log(icon)
-		console.log(name)
-		console.log(i)
-
-
 		marker = new google.maps.Marker({
 			position: new google.maps.LatLng(lat, lng),
 			map: map,
@@ -400,50 +411,222 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 		var infowindow = new google.maps.InfoWindow({
 			content: name
 		});
-
 		google.maps.event.addListener(marker, 'click', (function (marker, i) {
 			return function () {
 				infowindow.open(map, marker);
 			}
 		})(marker, i));
 	}
-	// function to display Bus 8655 Location (i.e. this bus changes routes daily)
+
+
+	// function to display Bus 8750 Location (i.e. this bus changes routes daily)
 	function getBus(map) {
 		$.ajax({
-			url: "http://api.511.org/transit/VehicleMonitoring?api_key=_______",
+			url: "http://api.511.org/transit/VehicleMonitoring?api_key=&agency=SF&vehicleID=8710",
 			method: "GET"
 		}).then(function (response) {
+			// Empty out the bus data 
+			$("#busInfo").empty();
+			console.log("Bus Info==========")
 			console.log(response)
 			// Pick out the data we want to use 
 			let data = response["Siri"]["ServiceDelivery"]["VehicleMonitoringDelivery"]["VehicleActivity"][0]["MonitoredVehicleJourney"]
-			let destination = data["DestinationName"]
+			console.log(data)
+			let finalDestination = data["DestinationName"]
 			let line = data["LineRef"]
 			let direction = data["DirectionRef"]
-			// let nextStopEArrival = data["OnwardCalls"]["OnwardCall"][0]["ExpectedArrivalTime"]
-			// let nextStopname = data["OnwardCalls"]["OnwardCall"][0]["StopPointName"]
 			let lat = data["VehicleLocation"]["Latitude"]
 			let lng = data["VehicleLocation"]["Longitude"]
-			let title = line + direction
-			let name = line + direction
+			let title = line + " " + direction
+			let name = line + " " + direction
 			let icon = 'https://img.icons8.com/doodle/48/000000/bus--v1.png'
+			let stopPointRef = data["MonitoredCall"]["StopPointRef"]
 
-			console.log("===============")
-			console.log(1, data)
-			console.log("===============")
+			// Current Stop Data Information
+			let currentStopName = data["MonitoredCall"]["StopPointName"]
+			let currentStopEArrival = data["MonitoredCall"]["ExpectedArrivalTime"]
+			let currentStopAimedDeparture = data["MonitoredCall"]["AimedDepartureTime"]
+
+			// Next Stop Data Information
+			let nextStopname = data["OnwardCalls"]["OnwardCall"][0]["StopPointName"]
+			let nextStopEArrival = data["OnwardCalls"]["OnwardCall"][0]["ExpectedArrivalTime"]
+
+
+			// Define variables to use in calculating the distance between two bus stops
+			let latCurr, lngCurr, latNext, lngNext;
+			// Iterate through the busStops Array to find the latitude and longitude of the current and next bus stop by filtering for the bus stop name
+			for (i = 0; i < busStopsArray.length; i++) {
+				if (busStopsArray[i][2] === currentStopName) {
+					console.log("Yay the bus stop was found")
+					console.log("This is the busStopsArray[i]", busStopsArray[i])
+					latCurr = busStopsArray[i][0];
+					lngCurr = busStopsArray[i][1];
+				}
+				if (busStopsArray[i][2] === nextStopname) {
+					console.log("Yay the bus stop was found")
+					console.log("This is the busStopsArray[i]", busStopsArray[i])
+					latNext = busStopsArray[i][0];
+					lngNext = busStopsArray[i][1];
+				}
+			}
+			console.log(latCurr, lngCurr, latNext, lngNext)
+			// Get the miles between the two bus stops calling on the getDistanceBetweenPoints function which takes (the next bus stop latitude, the next bus stop longitude, the current stop latitude and the current stop longitude)
+			let miles = getDistanceBetweenPoints(latNext, lngNext, latCurr, lngCurr)
+			console.log("The distance in miles from stop ", currentStopName, "to ", nextStopname, " is ", miles, " Miles")
+			distance.push(miles)
+
+
+			let timebetweenTwoStops = getTimeBetweenStops(currentStopAimedDeparture, nextStopEArrival, miles)
+
+
+
+
+
+			// Manipulate and estimated arrival time and current time to display in a nice format to users
+			var ts = new Date();
+			let currentTime = displayNiceTime(ts, false)
+			ts = new Date(currentStopEArrival)
+			let a = displayNiceTime(ts, true)
+			currentStopEArrival = a[0]
+			let minutesToArrival = a[1]
+
+			// create elements to display the line and direction of the bus, next stop, expected arrival 
+			var h3 = $("<h3>").text(title).addClass("purple text-center").css("padding-top", "20px")
+			var text1 = $("<p>").text("Next Stop: " + currentStopName);
+			var text2 = $("<p>").text("Estimated Arrival Time: " + currentStopEArrival);
+			var text3 = $("<p>").text("Current Time: " + currentTime);
+			var text4 = $("<p>").text("Bus will arrive in " + minutesToArrival)
+			var text5 = $("<p>").text("Final Destination: " + finalDestination);
+			// Display Bus Information under the #busInfo Div
+			$("#busInfo").append(h3, text1, text2, text3, text4, text5);
+
 			// Display Bus Marker 
 			displayMarker(lat, lng, map, title, icon, name, 300)
 
+			console.log("===============")
+			console.log(1, data)
+			console.log("Line: ", line)
+			console.log("Direction: ", direction)
+			console.log("Destination: ", finalDestination)
+			console.log("Next Stop Expected Arrival: ", currentStopEArrival)
+			console.log("Next stop arrival name: ", nextStopname)
+			console.log("Title: ", title)
+			console.log("Name: ", name)
+			console.log("Current Time: ", currentTime)
+			console.log("===============")
+
 		})
+		displayChart()
 	}
+
+	function getTimeBetweenStops(currStop, nextStop, distance) {
+		console.log("I want this now")
+		console.log(currStop)
+		console.log(nextStop)
+		console.log(distance)
+		console.log("I want this now")
+		a = new Date(currStop)
+		b = new Date(nextStop)
+		console.log(a)
+		console.log(b)
+		let aHours = a.getHours()
+		let aMinutes = a.getMinutes()
+		let aSeconds = a.getSeconds();
+		let bHours = b.getHours()
+		let bMinutes = b.getMinutes()
+		let bSeconds = b.getSeconds()
+		let hourDiff = bHours - aHours
+		let minutesDiff = bMinutes - aMinutes
+		let secondsDiff = bSeconds - aSeconds
+		console.log(aHours)
+		console.log(bHours)
+		console.log(hourDiff)
+		console.log(aMinutes)
+		console.log(bMinutes)
+		console.log(minutesDiff)
+		console.log(aSeconds)
+		console.log(bSeconds)
+		console.log(secondsDiff)
+
+		let seconds = (hourDiff * 3600) + (minutesDiff * 60) + secondsDiff
+		console.log("Here it is in seconds: ")
+		console.log(seconds)
+		let minutes = (seconds / 60)
+		let hours = (minutes / 60)
+		console.log("Here it is in minutes: ")
+		console.log(minutes)
+		let speed;
+		let dis = distance
+		console.log("This is the speed in miles per hour ")
+		speed = (dis / hours).toFixed(2)
+
+		return speed
+		console.log(speed, "mph")
+	}
+
+
+	function displayNiceTime(ts, boolean) {
+		let timeUntilBusArrives;
+		console.log("Input Time", ts)
+		let hours = ts.getHours()
+		let minutes = ts.getMinutes()
+		let meridiem = " AM"
+		console.log("===========Current Time==================")
+		console.log("Hours ", hours)
+		console.log("Minutes ", minutes)
+		console.log("===========Current Time==================")
+		// convert to 12-hour time format
+		if (hours > 12) {
+			hours = hours - 12
+			meridiem = " PM"
+		}
+		// if it's midnight
+		else if (hours === 0) {
+			hours = 12
+		}
+		// minutes should always be two digits long
+		if (minutes < 10) {
+			minutes = "0" + minutes.toString()
+		}
+		let time = hours + ":" + minutes + meridiem
+		console.log("Output Time: ", time)
+		let temp = [hours, minutes]
+		t.push(temp)
+		console.log(" This is t " + t)
+		if (boolean === true) {
+			console.log(t)
+			let hoursDiff = t[1][0] - t[0][0]
+			let minutesDiff = t[1][1] - t[0][1]
+			console.log("This is the difference in hours ", hoursDiff)
+			console.log("This is the minutes Diff ", minutesDiff)
+			if (hoursDiff <= 0 && minutesDiff <= 0) {
+				timeUntilBusArrives = "Will arrive shortly."
+			}
+			else if (minutesDiff === 1) {
+				timeUntilBusArrives = minutesDiff + " minute"
+			}
+			else if (hoursDiff <= 0) {
+				timeUntilBusArrives = minutesDiff + " minutes"
+			}
+			else {
+				timeUntilBusArrives = hoursDiff + " hours " + minutesDiff + " minutes"
+			}
+			let a = [time, timeUntilBusArrives]
+			console.log(a)
+			return a
+		}
+		return time
+	}
+
+
 
 	function displayChart() {
 		new Chart(document.getElementById("line-chart"), {
-
 			type: 'line',
 			data: {
 				labels: averageSpeed,
 				datasets: [{
-					data: distance,
+					data: time,
 					label: "LBUS",
 					borderColor: "#8e5ea2",
 					fill: true,
@@ -506,22 +689,129 @@ integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7
 
 	displayChart()
 
+
+	// Function to retrieve the location of the user
+	function geoFindMe() {
+		const status = document.querySelector('#status');
+		function success(position) {
+			// Set the userLocation to an empty array
+			userLocation = [];
+			// Retrieve the latitude and longitude of the user 
+			const latitude = position.coords.latitude
+			const longitude = position.coords.longitude
+			// update the userLocation variable 
+			userLocation.push(latitude)
+			userLocation.push(longitude)
+			console.log(userLocation)
+			status.textContent = '';
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 14,
+				center: new google.maps.LatLng(latitude, longitude),
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
+			var infowindow = new google.maps.InfoWindow();
+			// Update the current location star and display on map
+			displayMarker(latitude, longitude, map, "You are here", "https://img.icons8.com/emoji/48/000000/star-emoji.png", "Your Location", 251)
+			var marker, i;
+			console.log("pass the new long,lat")
+			// Display the bus pins
+			for (i = 0; i < busStopsArray.length; i++) {
+				// Pick out the data we want to use 
+				let lat = busStopsArray[i][0]
+				let lng = busStopsArray[i][1]
+				let name = busStopsArray[i][2]
+				let title = busStopsArray[i][3]
+				let id = busStopsArray[i][4]
+				let busStopId = busStopsArray[i][5]
+				let icon = "https://img.icons8.com/office/40/000000/map-pin.png"
+				// Pass the lattitude, longitude, map, title, icon, name and i to the displayMarker function
+				console.log(lat)
+				console.log(lng)
+				console.log(name)
+				console.log(i)
+				displayMarker(lat, lng, map, title, icon, name, i)
+			}
+			// Get the bus location and show it on the Map
+			getBus(map)
+		}
+		function error() {
+			status.textContent = 'Unable to retrieve your location';
+		}
+		if (!navigator.geolocation) {
+			status.textContent = 'Geolocation is not supported by your browser';
+		} else {
+			status.textContent = 'Locating…';
+			navigator.geolocation.getCurrentPosition(success, error);
+		}
+	}
+	// Adding a click event listener to the Share your location button
+	document.querySelector('#find-me').addEventListener('click', geoFindMe);
+
+
+
+
+	/**
+	 * Converts degrees to radians.
+	 * 
+	 * @param degrees Number of degrees.
+	 */
+	function degreesToRadians(degrees) {
+		return degrees * Math.PI / 180;
+	}
+
+	/**
+	 * Returns the distance between 2 points of coordinates in Google Maps
+	 * 
+	 * @see https://stackoverflow.com/a/1502821/4241030
+	 * @param lat1 Latitude of the point A
+	 * @param lng1 Longitude of the point A
+	 * @param lat2 Latitude of the point B
+	 * @param lng2 Longitude of the point B
+	 */
+	function getDistanceBetweenPoints(lat1, lng1, lat2, lng2) {
+		console.log("Lat 1 ", lat1)
+		console.log("lng 2", lng1)
+		console.log("lat2", lat2)
+		console.log("lng 2", lng2)
+		// The radius of the planet earth in meters
+		let R = 6378137;
+		let dLat = degreesToRadians(lat2 - lat1);
+		let dLong = degreesToRadians(lng2 - lng1);
+		let a = Math.sin(dLat / 2)
+			*
+			Math.sin(dLat / 2)
+			+
+			Math.cos(degreesToRadians(lat1))
+			*
+			Math.cos(degreesToRadians(lat1))
+			*
+			Math.sin(dLong / 2)
+			*
+			Math.sin(dLong / 2);
+
+		let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		let distanceInMeters = R * c;
+		let distanceInMiles = (distanceInMeters * 0.0006213711922373339).toFixed(2)
+		return distanceInMiles;
+	}
+
+
 </script>
 <!--Load the API from the specified URL
 	* The async attribute allows the browser to render the page while the API loads
 	* The key parameter will contain your own API key (which is not needed for this tutorial)
 	* The callback parameter executes the initMap() function
 	-->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=" async
-	defer></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async
+	defer></script>
 
+
+<script type="text/javascript" src="index.js"></script>
 <!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script type="text/javascript" src="index.js"></script>
 
 </html>
