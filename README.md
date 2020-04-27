@@ -39,17 +39,19 @@ Response includes a list of operators
     
 Exmaple of Operator Data   
 
-	{
-		"Id": "SF"
-		"Montiored": true
-		"Name": "San Francisco Municipal Transportation Agency"
-		"PrimaryMode": "bus"
-		"PrivateCode": "SF"
-		"ShortName": "SF Muni"
-		"SiriOperatorRef": "SFMTA"
-		"TimeZone": "America/Vancouver"
-		"WebSite": "https://SFMTA.com"
-	}
+```
+{
+  "Id": "SF"
+  "Montiored": true
+  "Name": "San Francisco Municipal Transportation Agency"
+  "PrimaryMode": "bus"
+  "PrivateCode": "SF"
+  "ShortName": "SF Muni"
+  "SiriOperatorRef": "SFMTA"
+  "TimeZone": "America/Vancouver"
+  "WebSite": "https://SFMTA.com"
+}
+```
 
 <strong>2) API: Line (pg.11) </strong>
 
@@ -61,15 +63,17 @@ Response includes a list of Lines for SF MTA
 
 Exmaple of Line Data 
 
-	{
-			"Id": "LBUS"
-			"Montiored": true
-			"Name": "TARAVAL BUS"
-			"OperatorRef": "SF"
-			"PublicCode": "LBUS"
-			"SiriLineRef": "LBUS"
-			"TransportMode": "bus"
-	}
+```
+{
+  "Id": "LBUS"
+  "Montiored": true
+  "Name": "TARAVAL BUS"
+  "OperatorRef": "SF"
+  "PublicCode": "LBUS"
+  "SiriLineRef": "LBUS"
+  "TransportMode": "bus"
+}
+```
 
 <strong>3) API: Stop (pg. 13)</strong>
 
@@ -81,16 +85,17 @@ Response includes a list of Scheduled Stop Points for the LBUS line
 
 Exmaple of Stop Data   
 
-	{   
-		"id:" "13267",
-		"StopType": "onstreetBus",
-		"Name": "15th Ave & Taraval St",
-		"Location": {
-				"Longitude": "-122.471405", 
-				"Latitude": "37.743069"
-		}
-	}
-
+```
+{   
+  "id:" "13267",
+  "StopType": "onstreetBus",
+  "Name": "15th Ave & Taraval St",
+  "Location": {
+    "Longitude": "-122.471405", 
+    "Latitude": "37.743069"
+  }
+}
+```
 <strong>4) API: Real-time Vehicle Monitoring (pg. 32) </strong>
 
 Per API doccumentation: "Siri Vehicle monitoring service provides information about current location and expected activities of a particular vehicle. It also provides details for current and subsequent Journey patterns."
@@ -100,59 +105,61 @@ Per API doccumentation: "Siri Vehicle monitoring service provides information ab
 Response includes a list of vehicles currently being monitored for the SFMTA
 
 Example of Vehicle Real Time Data
-   
-	{   
-			"OperatorRef": "SF"
-			"OriginName": "Fillmore St & Bay St"
-			"OriginRef": "14603"
-			"PublishedLineName": "FILLMORE"
-			"VehicleLocation": {
-					"Latitude": "37.7843056"
-					"Longitude": "-122.432991"
-			}
-			"VehicleRef": "5762"
-			"RecordedAtTime": "2020-04-26T23:04:19Z"
-			"DestinationName": "Third + 20th",
-			"DestinationRef": "13410",
-			"DirectionRef": "Outbound",
-			"LineRef": "22"
-			"Monitored": true
-			"MonitoredCall": {
-					"AimedArrivalTime": "2020-04-26T23:08:36Z"
-					"AimedDepartureTime": "2020-04-26T23:08:36Z"
-					"ExpectedArrivalTime": "2020-04-26T23:04:25Z"
-					"ExpectedDepartureTime": null
-					"StopPointName": "Fillmore St & O'Farrell St"
-					"StopPointRef": "14634"
-					"VehicleAtStop": ""
-					"VehicleLocationAtStop": ""
-			}
-			"OnwardCalls": {
-					"OnwardCall": Array(28) [
-							[
-									{
-											"AimedArrivalTime": "2020-04-26T23:10:00Z"
-											"AimedDepartureTime": "2020-04-26T23:10:00Z"
-											"ExpectedArrivalTime": "2020-04-26T23:05:20Z"
-											"ExpectedDepartureTime": null
-											"StopPointName": "Fillmore St & Eddy St"
-											"StopPointRef": "14612"
-									}
-							],
-							[
-									{
-											"AimedArrivalTime": "2020-04-26T23:11:14Z"
-											"AimedDepartureTime": "2020-04-26T23:11:14Z"
-											"ExpectedArrivalTime": "2020-04-26T23:06:17Z"
-											"ExpectedDepartureTime": null
-											"StopPointName": "Fillmore St & Turk St"
-											"StopPointRef": "14642"
-									}
-							],
-							[ {...}]
-					]
-			}
-	}
+
+```
+{   
+  "OperatorRef": "SF"
+  "OriginName": "Fillmore St & Bay St"
+  "OriginRef": "14603"
+  "PublishedLineName": "FILLMORE"
+  "VehicleLocation": {
+    "Latitude": "37.7843056"
+    "Longitude": "-122.432991"
+  }
+  "VehicleRef": "5762"
+  "RecordedAtTime": "2020-04-26T23:04:19Z"
+  "DestinationName": "Third + 20th",
+  "DestinationRef": "13410",
+  "DirectionRef": "Outbound",
+  "LineRef": "22"
+  "Monitored": true
+  "MonitoredCall": {
+    "AimedArrivalTime": "2020-04-26T23:08:36Z"
+    "AimedDepartureTime": "2020-04-26T23:08:36Z"
+    "ExpectedArrivalTime": "2020-04-26T23:04:25Z"
+    "ExpectedDepartureTime": null
+    "StopPointName": "Fillmore St & O'Farrell St"
+    "StopPointRef": "14634"
+    "VehicleAtStop": ""
+    "VehicleLocationAtStop": ""
+  }
+  "OnwardCalls": {
+    "OnwardCall": Array(28) [
+      [
+        {
+          "AimedArrivalTime": "2020-04-26T23:10:00Z"
+          "AimedDepartureTime": "2020-04-26T23:10:00Z"
+          "ExpectedArrivalTime": "2020-04-26T23:05:20Z"
+          "ExpectedDepartureTime": null
+          "StopPointName": "Fillmore St & Eddy St"
+          "StopPointRef": "14612"
+        }
+      ],
+      [
+        {
+          "AimedArrivalTime": "2020-04-26T23:11:14Z"
+          "AimedDepartureTime": "2020-04-26T23:11:14Z"
+          "ExpectedArrivalTime": "2020-04-26T23:06:17Z"
+          "ExpectedDepartureTime": null
+          "StopPointName": "Fillmore St & Turk St"
+          "StopPointRef": "14642"
+        }
+      ],
+      [ {...}]
+    ]
+  }
+}
+```
 
 <strong>Note:</strong> Vehicles may be used on different routes each day, therefore a vehicleID of 8655 may be used on an LBUS line one day and a 14 bus line the next. Once a vehicle ID number is picked, use the vehicleID in the request parameter to narrow down the results.
 
