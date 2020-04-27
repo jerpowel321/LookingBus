@@ -56,9 +56,9 @@ Exmaple of Operator Data
 2) API: Line (pg.11)
 Per API doccumentation: "Lines are routes covered by transit operators within the jurisdiction. Consumers can request list of all the routes within an operator or they can use additional filters like line id to restrict the results as per their needs and use case."
 
-Request Endpoint: 
+<b>Request Endpoint: </b> http://api.511.org/transit/lines?api_key={your-key}&operator_id=SF
 
-http://api.511.org/transit/lines?api_key={your-key}&operator_id=SF
+
 
 Response includes a list of Lines for SF MTA
 Exmaple of Line Data 
