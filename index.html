@@ -5,8 +5,11 @@
 	<title>511 SF Transit</title>
 	<meta name="viewport" content="initial-scale=1.0">
 	<meta charset="utf-8">
-	<script src='./config.js'></script>
+	<link rel="icon" href="https://img.icons8.com/doodle/48/000000/bus--v1.png" />
 
+	<!-- Import API Keys from configj.js -->
+	<script src='./config.js'></script>
+	<!-- Import style sheet -->
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<!-- Googlefonts CDN -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -264,7 +267,7 @@
 	// Default userLocation to be near Salesforce Tower in downtown SF
 	let userLocation = [37.7897, -122.3972];
 	// Define busMarker
-	let busMarker;
+	let busMarker=[];
 	// Array to hold bus stop data for a line
 	let busStopsArray = [];
 	// Used to store the hours and minutes of the current time and the expected bus arrival time
@@ -284,7 +287,7 @@
 		let operatorId = $("select#agency option:checked").val()
 		let route = $("select#line option:checked").val()
 		// padding the operator ID and route to getBusStops function which retrieves the bus stop location from 511.org 
-		// getBusStops(operatorId, route);
+		getBusStops(operatorId, route);
 	});
 
 	// Set up the inital map screen
@@ -292,10 +295,11 @@
 
 	// Function to display the initial google map getting bus stops for the LBUS route from SFMTA
 	function initMap() {
-		let operatorId = "SF"
-		let route = "L-OWL"
-		getBusStops(operatorId, route)
 		displayChart()
+		let operatorId = "SF"
+		let route = "LBUS"
+		getBusStops(operatorId, route)
+	
 	}
 
 	function getBusStops(operatorId, route) {
@@ -324,15 +328,14 @@
 			// Display under the #BusStopDataTitle Div
 			$("#busStopDataTitle").append(h3);
 			// Display the google Map centered around the first bus stop locaton received from the API Call
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 15,
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 13,
 				center: new google.maps.LatLng(userLocation[0], userLocation[1]),
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
 			var infowindow = new google.maps.InfoWindow();
 			// Display Bus Stop Markers by interating through the dataBusStops array
 			var marker, i;
-			busStopsArray = [];
 			for (i = 0; i < dataBusStops.length; i++) {
 				// Pick out the data we want to use 
 				let lat = dataBusStops[i]["Location"]["Latitude"]
@@ -358,7 +361,7 @@
 			// Display user location marker and assign it index 250
 			displayMarker(userLocation[0], userLocation[1], map, "You are here", "https://img.icons8.com/emoji/48/000000/star-emoji.png", "Your Location", 250)
 			// Get the bus location and show it on the Map
-			getBus(map)
+			getBus()
 		}
 		)
 	}
@@ -384,18 +387,28 @@
 		})(marker, i));
 	}
 
+	// Function to remove the bus marker from the map
+	function removeBus(){
+		console.log("Busmarker Length", busMarker.length)
+		if(busMarker.length >0){
+			for(i=0; i<busMarker.length; i++){
+        busMarker[i].setMap(null);
+		}
+		// Remove the text in the busInfo div
+		$("#busInfo").empty();
+		}
+		busMarker = [];
+}
 
 	// function to display Bus 8750 Location (i.e. this bus changes routes daily)
-	function getBus(map) {
-		let url = "http://api.511.org/transit/VehicleMonitoring?api_key=" + config["Transit_API_KEY"] + "&agency=SF&vehicleID=8817"
+	function getBus() {
+		let url = "http://api.511.org/transit/VehicleMonitoring?api_key=" + config["Transit_API_KEY"] + "&agency=SF&vehicleID=8632"
 		$.ajax({
 			url: url,
 			method: "GET"
 		}).then(function (response) {
-			// Empty busLocation Array
-			busLocation = [];
-			// Empty out the bus data 
-			$("#busInfo").empty();
+			// Remove the bus marker from the map
+			removeBus()
 			console.log("=========== Bus Data ==============")
 			console.log(response)
 			console.log("=========== Bus Data ==============")
@@ -473,17 +486,18 @@
 			console.log(latNum, "====awsidjnainsidasnidnna")
 			console.log(lngNum, "asjdnsandinsidnaidnsna")
 			console.log(myLatlng)
-			busMarker = new google.maps.Marker({
+			var bus = new google.maps.Marker({
 				position: myLatlng,
+				map: map,
 				title: title,
 				icon: icon,
 				draggable: true
 			});
+			console.log("This is the bus", bus)
+			busMarker.push(bus)
+			console.log("this is the bus marker array", busMarker)
+			busMarker[0].setMap(map);
 
-			busMarker.setMap(map);
-			// busMarker.remove();
-			// busMarker.setMap(null);
-			// displayMarker(lat, lng, map, title, icon, name, 300)
 
 			console.log("===============")
 			console.log("Title: ", title)
@@ -500,7 +514,7 @@
 			console.log("===============")
 
 		})
-		displayChart()
+		
 	}
 
 	function getSpeedBetweenStops(currStop, nextStop, distance) {
@@ -546,13 +560,21 @@
 		if (speed <=0){
 			averageSpeed.push(0)
 			time.push(count)
+			count++
+			console.log("This is the the average speed and time arrays")
+			console.log(averageSpeed)
+			console.log(time)
+			displayChart()
 		}
 		else {
 			averageSpeed.push(speed)
 			time.push(count)
+			count++
+			console.log("This is the the average speed and time arrays")
+			console.log(averageSpeed)
+			console.log(time)
+			displayChart()
 		}
-		// Increase the count
-		count++
 	}
 
 
@@ -687,8 +709,8 @@
 			userLocation.push(longitude)
 			console.log(userLocation)
 			status.textContent = '';
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 15,
+			map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 13,
 				center: new google.maps.LatLng(latitude, longitude),
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			});
@@ -710,7 +732,7 @@
 				displayMarker(lat, lng, map, title, icon, name, i)
 			}
 			// Get the bus location and show it on the Map
-			getBus(map)
+			getBus()
 		}
 		// If the user denies popup window requestion access to their location display the following message
 		function error() {
@@ -727,8 +749,6 @@
 	document.querySelector('#find-me').addEventListener('click', geoFindMe);
 
 
-
-
 	/**
 	 * Converts degrees to radians.
 	 * 
@@ -741,7 +761,6 @@
 	/**
 	 * Returns the distance between 2 points of coordinates in Google Maps
 	 * 
-	 * @see https://stackoverflow.com/a/1502821/4241030
 	 * @param lat1 Latitude of the point A
 	 * @param lng1 Longitude of the point A
 	 * @param lat2 Latitude of the point B
@@ -770,6 +789,7 @@
 		return distanceInMiles;
 	}
 
+	//Every 60 seconds update the bus marker and chart
 	setInterval(function () {
 		console.log("Getting Bus Current Location after 1 minute.")
 		getBus(map);
@@ -783,13 +803,13 @@
 	* The callback parameter executes the initMap() function
 	-->
 
+	
 <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async
 	defer></script>
 
 
 <script type="text/javascript" src="index.js"></script>
 <!-- Bootstrap JS -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"

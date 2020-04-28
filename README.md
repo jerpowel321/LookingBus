@@ -174,6 +174,10 @@ The time it takes for a bus to drive between two stops is calculated based on th
 
 The speed is calculated by getting the distance/time.
 
+### Issues Observed
+- The speed of the bus relies upon accurate recording of expected departure time from the current stop and the expected arrival time of the bus at the next stop. However the bus expected departure time and arrival times are not always accurate. There may be instances where the bus expected arrival has not been updated but the bus is far away from the stop. Therefore the speed would be much higher than in reality. Vice Versa the speed may be calculated as negative if the bus has departed from a stop but the current stop destination and next destination has not been updated yet. 
+- The bus may apear further away from a stop than it actually is as the bus' location is not updated everytime a call is map. The bus location is updated everytime the API records the updated location which may have delays. 
+
 ## 🔧 Technologies
 - HTML
 - CSS
