@@ -1,7 +1,3 @@
-
-
-
-
 // Function to retrieve the location of the user
 function geoFindMe() {
     // Display status message on webpage

@@ -274,35 +274,28 @@
 <script>
 	// Array to hold bus stop data for a line
 	let busStopsArray = [];
-	// 511 API Key
+	// 511 & GoogleMaps API Key
 	var API_Key_511 = config["Transit_API_KEY"]
+	var GOOGLE_KEY = config["GOOGLE_API_KEY"]
 	// Default userLocation to be near Salesforce Tower in downtown SF
 	let userLocation = [37.7897, -122.3972];
-
+	// Declare variable busID for the bus to be tracked
 	let busID;
 
-	// Function to display the initial google map getting bus stops for the LBUS route from SFMTA
-	// displayChart()
-	//Every 60 seconds update the bus marker and chart
-	// Adding a click event listener to the Share your location button
+	// <!--Load the API from the specified URL
+	// * The async attribute allows the browser to render the page while the API loads
+	// * The key parameter will contain your own API key (which is not needed for this tutorial)
+	// * The callback parameter executes the initMap() function
+	// -->
 	document.querySelector('#find-me').addEventListener('click', geoFindMe);
-
+	var gmapsScript = document.createElement("script");
+	var gmapsScriptURL = "https://maps.googleapis.com/maps/api/js?key=" + GOOGLE_KEY + "&callback=initMap";
+	gmapsScript.src = gmapsScriptURL;
+	gmapsScript.async = true;
+	gmapsScript.defer = true;
+	console.log(gmapsScriptURL);
+	document.head.append(gmapsScript)
 </script>
-<!--Load the API from the specified URL
-	* The async attribute allows the browser to render the page while the API loads
-	* The key parameter will contain your own API key (which is not needed for this tutorial)
-	* The callback parameter executes the initMap() function
-	-->
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJY6cbFl0IW1cAy0kLLzhhnYwutwEJ8U&callback=initMap" async
-	defer></script>
-
-
-
-
-
-
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
