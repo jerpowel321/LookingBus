@@ -23,6 +23,11 @@
 	<!-- Bootstrap CDN -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script type="text/javascript" src="js/chart.js"></script>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/sidenav.js"></script>
+	<script type="text/javascript" src="js/transit.js"></script>
+	<script type="text/javascript" src="js/userlocation.js"></script>
 </head>
 
 <body>
@@ -161,7 +166,8 @@
 								</button>
 							</h5>
 						</div>
-						<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+						<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+							data-parent="#accordion">
 							<div class="card-body">
 								<div class="container-sm">
 									<canvas id="line-chart" width="800" height="450"></canvas>
@@ -198,7 +204,8 @@
 				<h3 class="purple pt-5">Download the App</h3>
 				<button type="button" class="btn text-white btn-lg hvr-grow">
 					<svg width="20px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple"
-						class="svg-inline--fa fa-apple fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+						class="svg-inline--fa fa-apple fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 384 512">
 						<path fill="currentColor"
 							d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z">
 						</path>
@@ -234,9 +241,9 @@
 							d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z">
 						</path>
 					</svg>
-					<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin"
-						class="svg-inline--fa fa-linkedin fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 448 512">
+					<svg class="hvr-grow" width="40px" aria-hidden="true" focusable="false" data-prefix="fab"
+						data-icon="linkedin" class="svg-inline--fa fa-linkedin fa-w-14" role="img"
+						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
 						<path fill="currentColor"
 							d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z">
 						</path>
@@ -263,538 +270,22 @@
 	</footer>
 
 </body>
+<script type="text/javascript" src="js/form.js"></script>
 <script>
-	// Default userLocation to be near Salesforce Tower in downtown SF
-	let userLocation = [37.7897, -122.3972];
-	// Define busMarker
-	let busMarker=[];
 	// Array to hold bus stop data for a line
 	let busStopsArray = [];
-	// Used to store the hours and minutes of the current time and the expected bus arrival time
-	let t = [];
-	// Time and speed to be displayed in the chart, count represents each minute that goes by
-	let time = [0]
-	let averageSpeed = [0];
-	let count = 1;
-	// Miles between two stops
-	let distance = [];
+	// 511 API Key
+	var API_Key_511 = config["Transit_API_KEY"]
+	// Default userLocation to be near Salesforce Tower in downtown SF
+	let userLocation = [37.7897, -122.3972];
 
-	// Adding a click event listener to the search button
-	$("#searchRoute").on("click", function (event) {
-		// event.preventDefault() prevents the form from trying to submit itself.
-		event.preventDefault();
-		// Take the value of the agency and route the user selected and pass it to the getBusStops function
-		let operatorId = $("select#agency option:checked").val()
-		let route = $("select#line option:checked").val()
-		// padding the operator ID and route to getBusStops function which retrieves the bus stop location from 511.org 
-		getBusStops(operatorId, route);
-	});
-
-	// Set up the inital map screen
-	var map;
+	let busID;
 
 	// Function to display the initial google map getting bus stops for the LBUS route from SFMTA
-	function initMap() {
-		displayChart()
-		let operatorId = "SF"
-		let route = "LBUS"
-		getBusStops(operatorId, route)
-	
-	}
-
-	function getBusStops(operatorId, route) {
-		busStopsArray = [];
-		var operator = "&operator_id=" + operatorId
-		var busRoute = "&Line_id=" + route
-		var API_Key = config["Transit_API_KEY"]
-		var BASEURL = "http://api.511.org/transit/stops?api_key="
-		var queryURL = BASEURL + API_Key + operator + busRoute
-		let location;
-		// Creating an AJAX call for the specific transportation agency and line being searched
-		$.ajax({
-			url: queryURL,
-			method: "GET"
-		}).then(function (response) {
-			// Empty out the bus data 
-			$("#busStopData").empty();
-			$("#busStopDataTitle").empty();
-			// Define dataBusStops to be the array of bus stops data
-			let dataBusStops = response.Contents.dataObjects.ScheduledStopPoint
-			console.log("=========== Bus Stop Data ==============")
-			console.log("Bus Stop Data from 511.org API", dataBusStops)
-			console.log("=========== Bus Stop Data ==============")
-			// Create an h3 element displaying "Bus Stops" 
-			var h3 = $("<h3>").text("Bus Stops").addClass("purple").css("padding-top", "40px");
-			// Display under the #BusStopDataTitle Div
-			$("#busStopDataTitle").append(h3);
-			// Display the google Map centered around the first bus stop locaton received from the API Call
-			map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 13,
-				center: new google.maps.LatLng(userLocation[0], userLocation[1]),
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			});
-			var infowindow = new google.maps.InfoWindow();
-			// Display Bus Stop Markers by interating through the dataBusStops array
-			var marker, i;
-			for (i = 0; i < dataBusStops.length; i++) {
-				// Pick out the data we want to use 
-				let lat = dataBusStops[i]["Location"]["Latitude"]
-				let lng = dataBusStops[i]["Location"]["Longitude"]
-				let latNum = Number(lat)
-				let lngNum = Number(lng)
-				let name = dataBusStops[i]["Name"]
-				let title = "Bus Stop"
-				let busStopId = dataBusStops[i]["id"]
-				let icon = "https://img.icons8.com/office/40/000000/map-pin.png"
-				let stop = [latNum, lngNum, name, title, busStopId]
-				// push the bus stop data into the BusStopsArray 
-				busStopsArray.push(stop)
-				// Pass the lattitude, longitude, map, title, icon, name and i to the displayMarker function
-				setTimeout(function () {
-					displayMarker(lat, lng, map, title, icon, name, i)
-				}, i * 200);
-				// create a p element displaying the bus stop name
-				var p = $("<p>").text(name);
-				// Display uner the #busStopData Div
-				$("#busStopData").append(p);
-			}
-			// Display user location marker and assign it index 250
-			displayMarker(userLocation[0], userLocation[1], map, "You are here", "https://img.icons8.com/emoji/48/000000/star-emoji.png", "Your Location", 250)
-			// Get the bus location and show it on the Map
-			getBus()
-		}
-		)
-	}
-
-	// function to display draggable markers on the map 
-	function displayMarker(lat, lng, map, title, icon, name, i) {
-		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(lat, lng),
-			map: map,
-			draggable: true,
-			animation: google.maps.Animation.DROP,
-			title: title,
-			icon: icon
-		});
-		// add an event listener so that when a marker is clicked the name of the marker will be shown
-		var infowindow = new google.maps.InfoWindow({
-			content: name
-		});
-		google.maps.event.addListener(marker, 'click', (function (marker, i) {
-			return function () {
-				infowindow.open(map, marker);
-			}
-		})(marker, i));
-	}
-
-	// Function to remove the bus marker from the map
-	function removeBus(){
-		console.log("Busmarker Length", busMarker.length)
-		if(busMarker.length >0){
-			for(i=0; i<busMarker.length; i++){
-        busMarker[i].setMap(null);
-		}
-		// Remove the text in the busInfo div
-		$("#busInfo").empty();
-		}
-		busMarker = [];
-}
-
-	// function to display Bus 8750 Location (i.e. this bus changes routes daily)
-	function getBus() {
-		let url = "http://api.511.org/transit/VehicleMonitoring?api_key=" + config["Transit_API_KEY"] + "&agency=SF&vehicleID=8632"
-		$.ajax({
-			url: url,
-			method: "GET"
-		}).then(function (response) {
-			// Remove the bus marker from the map
-			removeBus()
-			console.log("=========== Bus Data ==============")
-			console.log(response)
-			console.log("=========== Bus Data ==============")
-			// Pick out the data we want to use 
-			let data = response["Siri"]["ServiceDelivery"]["VehicleMonitoringDelivery"]["VehicleActivity"][0]["MonitoredVehicleJourney"]
-			let finalDestination = data["DestinationName"]
-			let line = data["LineRef"]
-			let direction = data["DirectionRef"]
-			let lat = data["VehicleLocation"]["Latitude"]
-			let lng = data["VehicleLocation"]["Longitude"]
-			let latNum = Number(lat)
-			let lngNum = Number(lng)
-			let title = line + " " + direction
-			let name = line + " " + direction
-			let icon = 'https://img.icons8.com/doodle/48/000000/bus--v1.png'
-			let stopPointRef = data["MonitoredCall"]["StopPointRef"]
-
-			// Current Stop Data Information
-			let currentStopName = data["MonitoredCall"]["StopPointName"]
-			let currentStopEArrival = data["MonitoredCall"]["ExpectedArrivalTime"]
-			let currentStopAimedDeparture = data["MonitoredCall"]["AimedDepartureTime"]
-
-			// Next Stop Data Information
-			let nextStopname = data["OnwardCalls"]["OnwardCall"][0]["StopPointName"]
-			let nextStopEArrival = data["OnwardCalls"]["OnwardCall"][0]["ExpectedArrivalTime"]
-
-			// Define variables to use in calculating the distance between two bus stops
-			let latCurr, lngCurr, latNext, lngNext;
-			// Iterate through the busStops Array to find the latitude and longitude of the current and next bus stop by filtering for the bus stop name
-			for (i = 0; i < busStopsArray.length; i++) {
-				if (busStopsArray[i][2] === currentStopName) {
-					console.log("======= Current Stop Data =========")
-					console.log(busStopsArray[i])
-					console.log("======= Current Stop Data =========")
-					latCurr = busStopsArray[i][0];
-					lngCurr = busStopsArray[i][1];
-				}
-				if (busStopsArray[i][2] === nextStopname) {
-					console.log("======= Next Stop Data =========")
-					console.log(busStopsArray[i])
-					console.log("======= Next Stop Data =========")
-					latNext = busStopsArray[i][0];
-					lngNext = busStopsArray[i][1];
-				}
-			}
-			console.log(latCurr, lngCurr, latNext, lngNext)
-			// Get the miles between the two bus stops calling on the getDistanceBetweenPoints function which takes (the next bus stop latitude, the next bus stop longitude, the current stop latitude and the current stop longitude)
-			let miles = getDistanceBetweenPoints(latNext, lngNext, latCurr, lngCurr)
-			console.log("The distance in miles from stop ", currentStopName, "to ", nextStopname, " is ", miles, " Miles")
-			// Push the distance between two stops into the distance array
-			distance.push(miles)
-			// Call on the getSpeedBewtween Stops function passing the currentStopAimedDeparture, nextStopEArrival and miles
-			getSpeedBetweenStops(currentStopAimedDeparture, nextStopEArrival, miles)
-
-			// Manipulate and estimated arrival time and current time to display in a nice format to users
-			let ts = new Date();
-			let currentTime = displayNiceTime(ts, false)
-			ts = new Date(currentStopEArrival)
-			let a = displayNiceTime(ts, true)
-			currentStopEArrival = a[0]
-			let minutesToArrival = a[1]
-
-			// create elements to display the line and direction of the bus, next stop, expected arrival 
-			var h3 = $("<h3>").text(title).addClass("purple text-center").css("padding-top", "20px")
-			var text1 = $("<p>").text("Next Stop: " + currentStopName);
-			var text2 = $("<p>").text("Estimated Arrival Time: " + currentStopEArrival);
-			var text3 = $("<p>").text("Current Time: " + currentTime);
-			var text4 = $("<p>").text("Bus " + minutesToArrival)
-			var text5 = $("<p>").text("Final Destination: " + finalDestination);
-			// Display Bus Information under the #busInfo Div
-			$("#busInfo").append(h3, text1, text2, text3, text4, text5);
-
-			// Display Bus Marker 
-			var myLatlng = new google.maps.LatLng(latNum, lngNum);
-			console.log(latNum, "====awsidjnainsidasnidnna")
-			console.log(lngNum, "asjdnsandinsidnaidnsna")
-			console.log(myLatlng)
-			var bus = new google.maps.Marker({
-				position: myLatlng,
-				map: map,
-				title: title,
-				icon: icon,
-				draggable: true
-			});
-			console.log("This is the bus", bus)
-			busMarker.push(bus)
-			console.log("this is the bus marker array", busMarker)
-			busMarker[0].setMap(map);
-
-
-			console.log("===============")
-			console.log("Title: ", title)
-			console.log("Name: ", name)
-			console.log("Line: ", line)
-			console.log("Direction: ", direction)
-			console.log("Final Destination: ", finalDestination)
-			console.log("Current Stop Name ", currentStopName)
-			console.log("Current Stop Expected Arrival: ", currentStopEArrival)
-			console.log("Current Stop Expected Departure: ", currentStopAimedDeparture)
-			console.log("Next stop arrival name: ", nextStopname)
-			console.log("Next Stop Expected Arrival", nextStopEArrival)
-			console.log("Current Time: ", currentTime)
-			console.log("===============")
-
-		})
-		
-	}
-
-	function getSpeedBetweenStops(currStop, nextStop, distance) {
-		console.log("======== Getting the time difference ==========")
-		// Converting zulu time to Desktop System Time (Pacific Standard)
-		a = new Date(currStop)
-		b = new Date(nextStop)
-		console.log("The current stop time is ", a)
-		console.log("The next stop time is", b)
-
-		// Getting the hours, minutes and seconds of the current stop aimed departure and next stop aimed arrival
-		let aHours = a.getHours()
-		let aMinutes = a.getMinutes()
-		let aSeconds = a.getSeconds();
-		let bHours = b.getHours()
-		let bMinutes = b.getMinutes()
-		let bSeconds = b.getSeconds()
-		// Getting the difference in hours, minutes and seconds from the two stops
-		let hourDiff = bHours - aHours
-		let minutesDiff = bMinutes - aMinutes
-		let secondsDiff = bSeconds - aSeconds
-		console.log("Next Stop Hours ", bHours, " and Current Stop Hours ", aHours, " should equal ", hourDiff)
-		console.log("Next Stop Minutes ", bMinutes, " and Current Stop Minutes ", aMinutes, " should equal ", minutesDiff)
-		console.log("Next Stop Seconds ", bSeconds, " and Current Stop Seconds ", aSeconds, " should equal ", secondsDiff)
-
-		// Get the total time difference between two stops in seconds
-		let seconds = (hourDiff * 3600) + (minutesDiff * 60) + secondsDiff
-		console.log("The time difference in seconds is: ", seconds)
-
-		// Get the total time difference between two stops in minutes
-		let minutes = (seconds / 60)
-		console.log("The time difference in minutes is: ", minutes)
-
-		// Define speed 
-		let speed;
-		let hours = (minutes / 60)
-
-		// Calculate the speed in miles per hour
-		speed = (distance / hours).toFixed(2)
-		console.log("This is the speed in miles per hour ", speed, " mph")
-
-		// Push the average speed and count into the averageSpeed and time arrays
-		if (speed <=0){
-			averageSpeed.push(0)
-			time.push(count)
-			count++
-			console.log("This is the the average speed and time arrays")
-			console.log(averageSpeed)
-			console.log(time)
-			displayChart()
-		}
-		else {
-			averageSpeed.push(speed)
-			time.push(count)
-			count++
-			console.log("This is the the average speed and time arrays")
-			console.log(averageSpeed)
-			console.log(time)
-			displayChart()
-		}
-	}
-
-
-	function displayNiceTime(ts, boolean) {
-		let timeUntilBusArrives;
-		let hours = ts.getHours()
-		let minutes = ts.getMinutes()
-		let meridiem = " AM"
-
-		// convert to 12-hour time format
-		if (hours > 12) {
-			hours = hours - 12
-			meridiem = " PM"
-		}
-		// if it's midnight
-		else if (hours === 0) {
-			hours = 12
-		}
-		// minutes should always be two digits long
-		if (minutes < 10) {
-			minutes = "0" + minutes.toString()
-		}
-		let time = hours + ":" + minutes + meridiem
-		let temp = [hours, minutes]
-		t.push(temp)
-		if (boolean === true) {
-			let hoursDiff = t[1][0] - t[0][0]
-			let minutesDiff = t[1][1] - t[0][1]
-
-			if (hoursDiff <= 0 && minutesDiff <= 0) {
-				timeUntilBusArrives = "will arrive shortly."
-			}
-			else if (minutesDiff === 1) {
-				timeUntilBusArrives = "will arrive in " + minutesDiff + " minute."
-			}
-			else if (hoursDiff <= 0) {
-				timeUntilBusArrives = "will arrive in " + minutesDiff + " minutes."
-			}
-			else {
-				timeUntilBusArrives = "will arrive in " + hoursDiff + " hours " + minutesDiff + " minutes."
-			}
-			let a = [time, timeUntilBusArrives]
-			console.log(a)
-			return a
-		}
-		return time
-	}
-
-
-
-	function displayChart() {
-		new Chart(document.getElementById("line-chart"), {
-			type: 'line',
-			data: {
-				labels: time,
-				datasets: [{
-					data: averageSpeed,
-					label: "LBUS",
-					borderColor: "#8e5ea2",
-					fill: true,
-					backgroundColor: "#F5F5F5",
-					pointBackgroundColor: '#68BBE5',
-					pointHoverBackgroundColor: "#70BE5B",
-					pointRadius: 5,
-					pointHoverRadius: 10,
-					pointBorderColor: "black",
-					pointBorderWidth: 2,
-					pointHoverBorderColor: "black",
-					pointHoverBorderWidth: 2
-				}],
-			},
-			options: {
-				scaleOptions: {
-					ticks: {
-						beginAtZero: true
-					}
-				},
-				title: {
-					display: true,
-					fontFamily: "'Montserrat', sans-serif",
-					fontSize: 20,
-					fontColor: "#70BE5B",
-					fontStyle: 'bold',
-					position: 'top',
-					text: 'Bus Average Speed (mph)'
-				},
-				scales: {
-					yAxes: [{
-						gridLines: false,
-						scaleLabel: {
-							display: true,
-							labelString: 'Speed (mph)',
-							fontColor: "#70BE5B",
-							fontFamily: "'Montserrat', sans-serif",
-							fontSize: 18
-						},
-						ticks: {
-							beginAtZero: true,
-						}
-					}],
-					xAxes: [{
-						gridLines: false,
-						scaleLabel: {
-							display: true,
-							labelString: 'Minutes',
-							fontColor: "#70BE5B",
-							fontFamily: "'Montserrat', sans-serif",
-							fontSize: 18
-						},
-					}],
-				},
-
-			}
-		});
-	}
-
-	displayChart()
-
-
-	// Function to retrieve the location of the user
-	function geoFindMe() {
-		// Display status message on webpage
-		const status = document.querySelector('#status');
-		function success(position) {
-			// Set the userLocation to an empty array
-			userLocation = [];
-			// Retrieve the latitude and longitude of the user 
-			const latitude = position.coords.latitude
-			const longitude = position.coords.longitude
-			// update the userLocation variable 
-			userLocation.push(latitude)
-			userLocation.push(longitude)
-			console.log(userLocation)
-			status.textContent = '';
-			map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 13,
-				center: new google.maps.LatLng(latitude, longitude),
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			});
-			var infowindow = new google.maps.InfoWindow();
-			// Update the current location star and display on map
-			displayMarker(latitude, longitude, map, "You are here", "https://img.icons8.com/emoji/48/000000/star-emoji.png", "Your Location", 251)
-			var marker, i;
-			// Display the bus pins
-			for (i = 0; i < busStopsArray.length; i++) {
-				// Pick out the data we want to use 
-				let lat = busStopsArray[i][0]
-				let lng = busStopsArray[i][1]
-				let name = busStopsArray[i][2]
-				let title = busStopsArray[i][3]
-				let id = busStopsArray[i][4]
-				let busStopId = busStopsArray[i][5]
-				let icon = "https://img.icons8.com/office/40/000000/map-pin.png"
-				// Pass the lattitude, longitude, map, title, icon, name and i to the displayMarker function
-				displayMarker(lat, lng, map, title, icon, name, i)
-			}
-			// Get the bus location and show it on the Map
-			getBus()
-		}
-		// If the user denies popup window requestion access to their location display the following message
-		function error() {
-			status.textContent = 'Unable to retrieve your location';
-		}
-		if (!navigator.geolocation) {
-			status.textContent = 'Geolocation is not supported by your browser';
-		} else {
-			status.textContent = 'Locating…';
-			navigator.geolocation.getCurrentPosition(success, error);
-		}
-	}
+	// displayChart()
+	//Every 60 seconds update the bus marker and chart
 	// Adding a click event listener to the Share your location button
 	document.querySelector('#find-me').addEventListener('click', geoFindMe);
-
-
-	/**
-	 * Converts degrees to radians.
-	 * 
-	 * @param degrees Number of degrees.
-	 */
-	function degreesToRadians(degrees) {
-		return degrees * Math.PI / 180;
-	}
-
-	/**
-	 * Returns the distance between 2 points of coordinates in Google Maps
-	 * 
-	 * @param lat1 Latitude of the point A
-	 * @param lng1 Longitude of the point A
-	 * @param lat2 Latitude of the point B
-	 * @param lng2 Longitude of the point B
-	 */
-	function getDistanceBetweenPoints(lat1, lng1, lat2, lng2) {
-		// The radius of the planet earth in meters
-		let R = 6378137;
-		let dLat = degreesToRadians(lat2 - lat1);
-		let dLong = degreesToRadians(lng2 - lng1);
-		let a = Math.sin(dLat / 2)
-			*
-			Math.sin(dLat / 2)
-			+
-			Math.cos(degreesToRadians(lat1))
-			*
-			Math.cos(degreesToRadians(lat1))
-			*
-			Math.sin(dLong / 2)
-			*
-			Math.sin(dLong / 2);
-
-		let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		let distanceInMeters = R * c;
-		let distanceInMiles = (distanceInMeters * 0.0006213711922373339).toFixed(2)
-		return distanceInMiles;
-	}
-
-	//Every 60 seconds update the bus marker and chart
-	setInterval(function () {
-		console.log("Getting Bus Current Location after 1 minute.")
-		getBus(map);
-	}, 60000); //Eveery 60 seconds
-
 
 </script>
 <!--Load the API from the specified URL
@@ -803,16 +294,22 @@
 	* The callback parameter executes the initMap() function
 	-->
 
-	
-<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" async
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJY6cbFl0IW1cAy0kLLzhhnYwutwEJ8U&callback=initMap" async
 	defer></script>
 
 
-<script type="text/javascript" src="index.js"></script>
+
+
+
+
+
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
 
 </html>
