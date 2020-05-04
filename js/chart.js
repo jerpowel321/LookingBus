@@ -202,8 +202,8 @@ function degreesToRadians(degrees) {
 function getDistanceBetweenPoints(lat1, lng1, lat2, lng2) {
     // The radius of the planet earth in meters
     let R = 6378137;
-    let dLat = degreesToRadians(lat1 - lat2);
-    let dLong = degreesToRadians(lng1 - lng2);
+    let dLat = degreesToRadians(lat2 - lat1);
+    let dLong = degreesToRadians(lng2 - lng1);
     let a = Math.sin(dLat / 2)
         *
         Math.sin(dLat / 2)
