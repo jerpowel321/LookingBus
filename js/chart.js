@@ -68,6 +68,7 @@ function getSpeedBetweenStops(currStop, nextStop, distance) {
     }
 }
 
+// Function to display the time in a nice format
 function displayNiceTime(ts, boolean) {
     let timeUntilBusArrives;
     let hours = ts.getHours()
@@ -93,7 +94,7 @@ function displayNiceTime(ts, boolean) {
     if (boolean === true) {
         let hoursDiff = t[1][0] - t[0][0]
         let minutesDiff = t[1][1] - t[0][1]
-
+        // Display arrival time to user
         if (hoursDiff <= 0 && minutesDiff <= 0) {
             timeUntilBusArrives = "will arrive shortly."
         }
@@ -113,7 +114,7 @@ function displayNiceTime(ts, boolean) {
     return time
 }
 
-
+// Function to display a chart showing the average speed every minute
 function displayChart() {
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
