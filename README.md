@@ -21,15 +21,15 @@ The goal of this assignment is to display in real time, a bus' location, route a
 
 ### Design
 
-The application should include the following components. - Top navigation bar with at least 1 active item - Left side navigation bar with at least 1 active item - A pull up drawer (accordion????) which displays the chart - Bottom foldable????
+The application should include the following components. - Top navigation bar with at least 1 active item - Left side navigation bar with at least 1 active item - A pull up drawer/bottom foldable which displays the chart
 
-## Home Page
+## Home Page (Mobile View)
 
-![Home Page](https://media.giphy.com/media/gIZufbxpVhr6RZx0bi/giphy.gif)
+![Home Page](https://media.giphy.com/media/gIZufbxpVhr6RZx0bi/giphy.gif | width=100)
 
 ## About Page
 
-![About Page](https://media.giphy.com/media/U6k2Ns1f033GeUTQqH/giphy.gif)
+![About Page](https://media.giphy.com/media/U6k2Ns1f033GeUTQqH/giphy.gif | width=100)
 
 ## 511.org API Endpoints
 
