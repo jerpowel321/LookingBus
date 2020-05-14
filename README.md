@@ -25,11 +25,11 @@ The application should include the following components. - Top navigation bar wi
 
 ## Home Page (Mobile View)
 
-![Home Page](https://media.giphy.com/media/gIZufbxpVhr6RZx0bi/giphy.gif | width=100)
+<img src="https://media.giphy.com/media/gIZufbxpVhr6RZx0bi/giphy.gif" width="400" alt="Home Page" />
 
 ## About Page
 
-![About Page](https://media.giphy.com/media/U6k2Ns1f033GeUTQqH/giphy.gif | width=100)
+<img src="https://media.giphy.com/media/U6k2Ns1f033GeUTQqH/giphy.gif" width="600" alt="About Page" />
 
 ## 511.org API Endpoints
 
