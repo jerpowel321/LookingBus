@@ -28,6 +28,9 @@ The application should include the following components. - Top navigation bar wi
 <p align="center">
 <img src="https://media.giphy.com/media/gIZufbxpVhr6RZx0bi/giphy.gif" width="400" alt="Home Page" />
 </p>
+<p align="center">
+<img src="https://media.giphy.com/media/ZdyIAbgqtXG6kVLBL4/giphy.gif" width="400" alt="Home Page" />
+</p>
 
 ## About Page
 
