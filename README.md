@@ -21,7 +21,11 @@ The goal of this assignment is to display in real time, a bus' location, route a
 
 ### Design
 
-The application should include the following components. - Top navigation bar with at least 1 active item - Left side navigation bar with at least 1 active item - A pull up drawer/bottom foldable which displays the chart
+The application should include the following components.
+
+- Top navigation bar with at least 1 active item
+- Left side navigation bar with at least 1 active item
+- A pull up drawer/bottom foldable which displays the chart
 
 ## Home Page (Mobile View)
 
